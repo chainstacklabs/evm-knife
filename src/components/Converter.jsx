@@ -42,7 +42,7 @@ const Converter = () => {
     setInputValues(inputValues.map((v, i) => i === currentElement ? value : v));
     
     if (value === '') {
-        setOutputValues(outputValues.map((v, i) => i === currentElement ? ['', '', ''] : v));
+        setOutputValues(outputValues.map((v, i) => i === currentElement ? [''] : v));
         return;
       }
 
