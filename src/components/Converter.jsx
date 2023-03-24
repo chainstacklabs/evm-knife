@@ -11,7 +11,12 @@ const Converter = () => {
   const [inputValues, setInputValues] = useState(["", "", ""]);
   const [outputValues, setOutputValues] = useState(["", "", ""]);
   const [showNotification, setShowNotification] = useState(false);
-  let [conversionDirection, setConversionDirection] = useState("decimalToHex");
+  const [conversionDirection, setConversionDirection] = useState("decimalToHex");
+
+  // State variablle for the second tool for each element
+  const [inputValues2, setInputValues2] = useState(["", "", ""]);
+  const [outputValues2, setOutputValues2] = useState(["", "", ""]);
+
 
   // Copy notification function
 const showCopyNotification = () => {
@@ -40,6 +45,12 @@ const encodeEvent = (event) => {
   return keccakHash || ""; // Return the keccakHash or an empty string
 };
 
+const encodeTopic = async (topic) => {
+  const encodedParameter = Web3.utils.padLeft(topic, 64); // 64 characters = 32 bytes encoding
+  return encodedParameter;
+}
+
+// Functions to encode solidity functions and parameters
 const encodeFunction = async (func) => {
   const hashedFunction = Web3.utils.keccak256(func);
   if (hashedFunction) {
@@ -110,6 +121,28 @@ const hexToDecimal = (hexNumber) => {
     );
   };
 
+  // New function to handle input change for the second section
+  const handleSecondInputChange = async (event) => {
+    const inputValue = event.target.value;
+    setInputValues2(
+      inputValues2.map((v, i) => (i === currentElement ? inputValue : v))
+    );
+  
+    if (inputValue === "") {
+      setOutputValues2(
+        outputValues2.map((v, i) => (i === currentElement ? [""] : v))
+      );
+      return;
+    }
+  
+    const outputValue = await encodeTopic(inputValue);
+
+    setOutputValues2(
+      outputValues2.map((v, i) => (i === currentElement ? outputValue : v))
+    );
+  };
+  
+
   const elements = [
     <div
       key="element-1"
@@ -153,9 +186,9 @@ const hexToDecimal = (hexNumber) => {
       <h3 className="mb-4">Topic to encode</h3>
       <input
         type="text"
-        value={inputValues[currentElement]}
-        onChange={handleInputChange}
-        placeholder={"Transfer(address,address,uint256)"}
+        value={inputValues2[currentElement]}
+        onChange={handleSecondInputChange}
+        placeholder={"0x8c8d7c46219d9205f056f28fee5950ad564d7465"}
         className="bg-white text-black p-2 rounded border border-white w-full sm:w-1/2 md:w-full"
       />
       <div className="flex flex-col items-center w-full sm:w-1/2 md:w-full">
@@ -163,15 +196,15 @@ const hexToDecimal = (hexNumber) => {
         <input
           className="bg-white text-black p-2 rounded border border-white w-full"
           type="text"
-          value={outputValues[currentElement]}
+          value={outputValues2[currentElement]}
           placeholder={
-            "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+            "0x0000000000000000000000008c8d7c46219d9205f056f28fee5950ad564d7465"
           }
           readOnly
         />
         <button
           onClick={() => {
-            navigator.clipboard.writeText(outputValues[currentElement]);
+            navigator.clipboard.writeText(outputValues2[currentElement]);
             showCopyNotification();
           }}
           className="bg-gray-600 text-white px-3 py-1 rounded mt-4 hover:bg-teal-900"
