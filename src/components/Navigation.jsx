@@ -6,7 +6,7 @@ const Navigation = ({ elements, currentElement, switchElement }) => {
       case 0:
         return "Smart contract events";
       case 1:
-        return "Solidity function signature";
+        return "Solidity CALLDATA";
       default:
         return "Hex converter";
     }
