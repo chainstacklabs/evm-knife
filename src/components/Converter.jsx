@@ -46,9 +46,15 @@ const encodeEvent = (event) => {
 };
 
 const encodeTopic = async (topic) => {
+  // Check if the input doesn't start with '0x', then add it
+  if (!topic.startsWith('0x')) {
+    topic = '0x' + topic;
+  }
+
   const encodedParameter = Web3.utils.padLeft(topic, 64); // 64 characters = 32 bytes encoding
   return encodedParameter;
-}
+};
+
 
 // Functions to encode solidity functions and parameters
 const encodeFunction = async (func) => {
