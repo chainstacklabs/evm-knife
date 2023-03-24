@@ -8,6 +8,11 @@ input[type='number'].no-spinner::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.cursor-help:hover .hidden {
+  display: block;
+}
+
+
 input[type='number'].no-spinner {
   -moz-appearance: textfield;
 }

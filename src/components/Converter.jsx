@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import { faArrowsRotate } from "@fortawesome/free-solid-svg-icons";
+
 import Navigation from './Navigation';
 
 import Web3 from "web3";
@@ -16,6 +17,9 @@ const Converter = () => {
   // State variablle for the second tool for each element
   const [inputValues2, setInputValues2] = useState(["", "", ""]);
   const [outputValues2, setOutputValues2] = useState(["", "", ""]);
+
+  const [functionParamInput, setFunctionParamInput] = useState(["", "", ""]);
+  const [functionParamOutput, setFunctionParamOutput] = useState(["", "", ""]);
 
 
   // Copy notification function
@@ -63,6 +67,12 @@ const encodeFunction = async (func) => {
     return hashedFunction.slice(0, 10);
   }
   return ""; // Return an empty string if there's no hashed function
+};
+
+const encodeParameter = async (topic) => {
+  const paddedParameter = Web3.utils.padLeft(topic, 64); // 64 characters = 32 bytes encoding
+  const encodedParam= paddedParameter.slice(2)
+  return encodedParam;
 };
 
 // Conversion functions
@@ -127,7 +137,7 @@ const hexToDecimal = (hexNumber) => {
     );
   };
 
-  // New function to handle input change for the second section
+  // Function to handle input change for the topics
   const handleSecondInputChange = async (event) => {
     const inputValue = event.target.value;
     setInputValues2(
@@ -149,13 +159,37 @@ const hexToDecimal = (hexNumber) => {
   };
   
 
+  // Function to handle the parameters encoding
+  const handleParameters = async (event) => {
+    const inputValue = event.target.value;
+    setFunctionParamInput(
+      functionParamInput.map((v, i) => (i === currentElement ? inputValue : v))
+    );
+  
+    if (inputValue === "") {
+      setFunctionParamOutput(
+        functionParamOutput.map((v, i) => (i === currentElement ? [""] : v))
+      );
+      return;
+    }
+  
+    const outputValue = await encodeParameter(inputValue);
+
+    setFunctionParamOutput(
+      functionParamOutput.map((v, i) => (i === currentElement ? outputValue : v))
+    );
+  };
+
   const elements = [
     <div
       key="element-1"
       className="text-white flex flex-col items-center space-y-4"
     >
+      <h3 className="mb-4 text-3xl font-bold">Smart contract events tools</h3>
       <div className="border border-white w-full p-5 rounded-lg flex flex-col items-center ">
+    <div className="flex items-center">
       <h3 className="mb-4 text-2xl font-bold">Generate event signature</h3>
+    </div>
       <h3 className="mb-4">Event name and parameters type</h3>
       <input
         type="text"
@@ -194,7 +228,7 @@ const hexToDecimal = (hexNumber) => {
         type="text"
         value={inputValues2[currentElement]}
         onChange={handleSecondInputChange}
-        placeholder={"0x8c8d7c46219d9205f056f28fee5950ad564d7465"}
+        placeholder={"0x85BC2E8Aaad5dBc347db49Ea45D95486279eD918"}
         className="bg-white text-black p-2 rounded border border-white w-full sm:w-1/2 md:w-full"
       />
       <div className="flex flex-col items-center w-full sm:w-1/2 md:w-full">
@@ -204,7 +238,7 @@ const hexToDecimal = (hexNumber) => {
           type="text"
           value={outputValues2[currentElement]}
           placeholder={
-            "0x0000000000000000000000008c8d7c46219d9205f056f28fee5950ad564d7465"
+            "0x00000000000000000000000085BC2E8Aaad5dBc347db49Ea45D95486279eD918"
           }
           readOnly
         />
@@ -226,7 +260,11 @@ const hexToDecimal = (hexNumber) => {
       key="element-2"
       className="text-white flex flex-col items-center space-y-4"
     >
-      <h3>Generate a 4-bytes function signature</h3>
+
+      <h3 className="text-3xl font-bold mb-4" >Solidity CALLDATA tools</h3>
+      <div className="border border-white w-full p-5 rounded-lg flex flex-col items-center ">
+      <h3 className="text-2xl font-bold mb-4" >Generate Solidity functions CALLDATA</h3>
+      <h3 className="mb-4">Function name and parameters type</h3>
       <input
         type="text"
         value={inputValues[currentElement]}
@@ -235,7 +273,7 @@ const hexToDecimal = (hexNumber) => {
         className="bg-white text-black p-2 rounded border border-white w-full sm:w-1/2 md:w-full"
       />
       <div className="flex flex-col items-center w-full sm:w-1/2 md:w-full">
-        <h3 className="p-4">Solidity function signature</h3>
+        <h3 className="p-4">4-bytes Solidity function signature</h3>
         <input
           className="bg-white text-black p-2 rounded border border-white w-full"
           type="text"
@@ -253,9 +291,44 @@ const hexToDecimal = (hexNumber) => {
           <FontAwesomeIcon icon={faCopy} />
         </button>
       </div>
+      </div>
+
+      <div className="border border-white w-full p-5 rounded-lg flex flex-col items-center "> 
+      <h3 className="mb-4 text-2xl font-bold">Encode CALLDATA parameters</h3>   
+      <h3 className="mb-4">Parameter to encode</h3>
+      <input
+        type="text"
+        value={functionParamInput[currentElement]}
+        onChange={handleParameters}
+        placeholder={"0xdfd5293d8e347dfe59e90efd55b2956a1343963d"}
+        className="bg-white text-black p-2 rounded border border-white w-full sm:w-1/2 md:w-full"
+      />
+      <div className="flex flex-col items-center w-full sm:w-1/2 md:w-full">
+        <h3 className="p-4">Bytes-32 encoded parameter</h3>
+        <input
+          className="bg-white text-black p-2 rounded border border-white w-full"
+          type="text"
+          value={functionParamOutput[currentElement]}
+          placeholder={
+            "000000000000000000000000dfd5293d8e347dfe59e90efd55b2956a1343963d"
+          }
+          readOnly
+        />
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(outputValues2[currentElement]);
+            showCopyNotification();
+          }}
+          className="bg-gray-600 text-white px-3 py-1 rounded mt-4 hover:bg-teal-900"
+        >
+          <FontAwesomeIcon icon={faCopy} />
+        </button>
+      </div>
+      </div>
+
     </div>,
     <div key="element-3" className="text-white flex flex-col items-center">
-      <h3>Convert decimal and hexadecimal values</h3>
+      <h3 className="text-2xl font-bold" >Convert decimal and hexadecimal values</h3>
       {conversionDirection === "decimalToHex" ? (
         <>
           <h3 className="mt-2">Decimal</h3>
