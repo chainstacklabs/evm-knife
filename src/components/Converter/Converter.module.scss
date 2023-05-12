@@ -1,0 +1,53 @@
+.converter {
+  max-width: 1200px;
+  margin: auto;
+
+  padding: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+
+  gap: 24px;
+
+  .navigationBar {
+    grid-area: 1 / 1 / 2 / 3;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    // .divider {
+    //   margin: 10px 0 18px 0;
+    // }
+    .sectionName {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: semibold;
+      color: var(--color-typo-secondary);
+      margin-bottom: 12px;
+      &:not(:first-child) {
+        margin-top: 40px;
+      }
+    }
+    .moduleButton {
+      font-size: 16px;
+      background-color: transparent;
+      border: none;
+      text-align: left;
+      padding: 12px;
+      margin-bottom: 2px;
+      cursor: pointer;
+      color: var(--color-typo-primary);
+      border-radius: 4px;
+      //   width: fit-content;
+      &:hover {
+        background-color: var(--color-control-bg-nav-item-hover);
+      }
+    }
+  }
+  .modulesList {
+    grid-area: 1 / 3 / 2 / 7;
+  }
+}

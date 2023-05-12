@@ -1,0 +1,15 @@
+.app {
+  background-color: var(--color-bg-secondary);
+  width: 100vw;
+  height: 100vh;
+
+  color: var(--color-typo-primary);
+}
+
+.content {
+  background-color: var(--color-bg-primary);
+  margin: 0 20px;
+  border-radius: 20px;
+  height: calc(100vh - 88px - 20px);
+  overflow: scroll;
+}
