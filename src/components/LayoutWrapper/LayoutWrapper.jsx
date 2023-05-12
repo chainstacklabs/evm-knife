@@ -1,6 +1,6 @@
 import React from 'react';
 import { ConfigProvider, theme } from 'antd';
-import useLocalStorage from '@/pages/helpers/useLocalStorage';
+import useLocalStorage from '@/helpers/useLocalStorage';
 import Header from '../Header/Header';
 import styles from './LayoutWrapper.module.scss';
 
