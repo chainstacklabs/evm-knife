@@ -1,0 +1,16 @@
+.InputWithLabel {
+  .inputLabel {
+    font-size: 14px;
+    color: var(--color-typo-secondary);
+    margin-bottom: 8px;
+  }
+  button > span {
+    width: 85px !important;
+  }
+  .copyButtonSuccess {
+    background-color: hsl(120, 100%, 25%);
+    &:hover {
+      background-color: hsl(120, 100%, 30%);
+    }
+  }
+}
