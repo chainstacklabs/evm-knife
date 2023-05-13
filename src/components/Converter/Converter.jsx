@@ -11,12 +11,44 @@ import styles from './Converter.module.scss';
 const Converter = () => {
   // this ref array is used for anchor scrolling
   const refs = useRef([]);
+
   const randomizer = () => Math.random().toString(36).slice(2);
 
   const converterContents = [
     {
       type: 'section',
       name: 'Smart contract events tools',
+    },
+    {
+      type: 'module',
+      name: 'Tools general information',
+      description: () => (
+        <div>
+          Event logs are a type of log entry in the Ethereum blockchain that
+          contains information about events that have been triggered by smart
+          contracts. Event logs are created when a contract emits an event in
+          Solidity.
+          <br />
+          <br />
+          Learn more about event logs by following this guide on the Chainstack
+          developer portal:{' '}
+          <a
+            href="https://docs.chainstack.com/docs/tracking-some-bored-apes-the-ethereum-event-logs-tutorial"
+            target="_blank"
+          >
+            Tracking some Bored Apes: The Ethereum event logs tutorial
+          </a>
+        </div>
+      ),
+      isChild: true,
+      component: (name, description, index) => (
+        <div key={index + randomizer()}>
+          <h1 className="module_header">{name}</h1>
+          <div className="module_description" style={{ marginTop: '24px' }}>
+            {description()}
+          </div>
+        </div>
+      ),
     },
     {
       type: 'module',
@@ -84,7 +116,7 @@ const Converter = () => {
           In web3 and Solidity, CALLDATA refers to the input data that is sent
           along a transaction when an account is interacting with a smart
           contract and calling its functions. The first 4 Bytes of CALLDATA
-          represent the function's signature.
+          represent the function&apos;s signature.
           <br />
           <br />
           Learn how the encoding process work following the{' '}
@@ -145,7 +177,6 @@ const Converter = () => {
       name: 'Decimal → hexadecimal',
       description: 'Convert decimal to hexadecimal value.',
       isChild: true,
-
       component: (name, description, index) => (
         <HexConverter
           key={index + randomizer()}
