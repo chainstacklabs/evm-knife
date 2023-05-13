@@ -18,7 +18,7 @@ const EncodeEventTopics = ({ name, description }) => {
   return (
     <div className={styles.EncodeEventTopics}>
       <h1 className="module_header">{name}</h1>
-      <p className="module_description">{description}</p>
+      <p className="module_description">{description()}</p>
       <InputWithLabel
         inputLabel="Topic to encode"
         inputPlaceholder="0x85BC2E8Aaad5dBc347db49Ea45D95486279eD918"

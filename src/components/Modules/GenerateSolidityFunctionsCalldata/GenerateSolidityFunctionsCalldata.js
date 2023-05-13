@@ -19,7 +19,7 @@ const GenerateSolidityFunctionsCalldata = ({ name, description }) => {
   return (
     <div className={styles.GenerateSolidityFunctionsCalldata}>
       <h1 className="module_header">{name}</h1>
-      <p className="module_description">{description}</p>
+      <div className="module_description">{description()}</div>
       <InputWithLabel
         inputLabel="Function name and parameters type"
         inputPlaceholder="Transfer(address,uint256)"

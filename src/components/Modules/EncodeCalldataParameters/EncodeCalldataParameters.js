@@ -15,7 +15,7 @@ const EncodeCalldataParameters = ({ name, description }) => {
   return (
     <div className={styles.EncodeCalldataParameters}>
       <h1 className="module_header">{name}</h1>
-      <p className="module_description">{description}</p>
+      <div className="module_description">{description()}</div>
       <InputWithLabel
         inputLabel="Parameter to encode"
         inputPlaceholder="0xdfd5293d8e347dfe59e90efd55b2956a1343963d"

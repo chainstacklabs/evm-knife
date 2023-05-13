@@ -20,7 +20,7 @@ const GenerateEventSignature = ({ name, description }) => {
   return (
     <div className={styles.GenerateEventSignature}>
       <h1 className="module_header">{name}</h1>
-      <p className="module_description">{description}</p>
+      <div className="module_description">{description()}</div>
       <InputWithLabel
         inputLabel="Event name and parameters type"
         inputPlaceholder="Transfer(address,address,uint256)"
