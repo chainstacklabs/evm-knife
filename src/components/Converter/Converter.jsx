@@ -5,6 +5,7 @@ import EncodeEventTopics from '../Modules/EncodeEventTopics/EncodeEventTopics';
 import GenerateSolidityFunctionsCalldata from '../Modules/GenerateSolidityFunctionsCalldata/GenerateSolidityFunctionsCalldata';
 import EncodeCalldataParameters from '../Modules/EncodeCalldataParameters/EncodeCalldataParameters';
 import HexConverter from '../Modules/HexConverter/HexConverter';
+import EthWeiConverter from '../Modules/EthWeiConverter/EthWeiConverter';
 
 import styles from './Converter.module.scss';
 
@@ -36,8 +37,9 @@ const Converter = () => {
             href="https://docs.chainstack.com/docs/tracking-some-bored-apes-the-ethereum-event-logs-tutorial"
             target="_blank"
           >
-            Tracking some Bored Apes: The Ethereum event logs tutorial
+            Tracking some Bored Apes: The Ethereum event logs tutorial ↗
           </a>
+          .
         </div>
       ),
       isChild: true,
@@ -170,7 +172,7 @@ const Converter = () => {
     },
     {
       type: 'section',
-      name: 'Hex converter',
+      name: 'Converters',
     },
     {
       type: 'module',
@@ -197,6 +199,19 @@ const Converter = () => {
           name={name}
           description={description}
           type={name.toLowerCase().replace(' → ', '-')}
+        />
+      ),
+    },
+    {
+      type: 'module',
+      name: 'Eth – Wei',
+      description: 'Conversion between Ether and its sub-units.',
+      isChild: true,
+      component: (name, description, index) => (
+        <EthWeiConverter
+          key={index + randomizer()}
+          name={name}
+          description={description}
         />
       ),
     },
