@@ -6,6 +6,8 @@ import GenerateSolidityFunctionsCalldata from '../Modules/GenerateSolidityFuncti
 import EncodeCalldataParameters from '../Modules/EncodeCalldataParameters/EncodeCalldataParameters';
 import HexConverter from '../Modules/HexConverter/HexConverter';
 import EthWeiConverter from '../Modules/EthWeiConverter/EthWeiConverter';
+import KeccakConverter from '../Modules/Keccak-256/Keccak-256';
+import ChecksumAddress from '../Modules/Checksum/Checksum';
 
 import styles from './Converter.module.scss';
 
@@ -22,7 +24,7 @@ const Converter = () => {
     },
     {
       type: 'module',
-      name: 'Tools general information',
+      name: 'Smart contracts events',
       description: () => (
         <div>
           Event logs are a type of log entry in the Ethereum blockchain that
@@ -209,6 +211,63 @@ const Converter = () => {
       isChild: true,
       component: (name, description, index) => (
         <EthWeiConverter
+          key={index + randomizer()}
+          name={name}
+          description={description}
+        />
+      ),
+    },
+    {
+      type: 'module',
+      name: 'Keccak-256',
+      description: () => (
+        <div>
+          Keccak256 is a cryptographic hash function that generates a unique, 
+          fixed-size string of bytes for each unique input it receives. 
+          This feature makes it useful for ensuring data integrity, as any change in the input data leads to a different hash output. 
+          It's virtually impossible to derive the original input from the hash output, making it a one-way function.
+          <br />
+          <br />
+          Find a list of examples where Keccak256 is used in the {' '}
+          <a
+            href="https://docs.chainstack.com/docs/smart-contracts-glossary#keccak256"
+            target="_blank"
+          >
+            Chainstack developer portal
+          </a>.
+        </div>
+      ),
+      isChild: true,
+      component: (name, description, index) => (
+        <KeccakConverter
+          key={index + randomizer()}
+          name={name}
+          description={description}
+        />
+      ),
+    },
+    {
+      type: 'module',
+      name: 'Checksum address',
+      description: () => (
+        <div>
+        A checksummed address is a standard Ethereum address with certain characters capitalized to include a checksum validation. 
+        Checksumming is a way of having error-detection codes in an Ethereum address. 
+        Checksumming aims to prevent errors when an address is typed manually.
+          <br />
+          <br />
+          Find more about checksum in Ethereum in the {' '}
+          <a
+            href="https://docs.chainstack.com/docs/smart-contracts-glossary?kjh#address-checksumming"
+            target="_blank"
+          >
+            Chainstack developer portal
+          </a>.
+        </div>
+      ),
+      isChild: true,
+      component: (name, description, index) => (
+        <ChecksumAddress
           key={index + randomizer()}
           name={name}
           description={description}

@@ -1,0 +1,19 @@
+.EthWeiConverter {
+  .numberInput {
+    margin-bottom: 20px;
+    width: calc(750px / 2);
+    display: flex;
+    &:last-child {
+      margin-bottom: 0px;
+    }
+    & > div {
+      width: 100%;
+    }
+    & > button {
+      margin-left: 8px;
+    }
+  }
+  & > div:last-child {
+    // margin-top: 1em;
+  }
+}
