@@ -225,7 +225,7 @@ const Converter = () => {
           Keccak256 is a cryptographic hash function that generates a unique, 
           fixed-size string of bytes for each unique input it receives. 
           This feature makes it useful for ensuring data integrity, as any change in the input data leads to a different hash output. 
-          It's virtually impossible to derive the original input from the hash output, making it a one-way function.
+          It&apos;s virtually impossible to derive the original input from the hash output, making it a one-way function.
           <br />
           <br />
           Find a list of examples where Keccak256 is used in the {' '}
