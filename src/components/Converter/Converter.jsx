@@ -8,6 +8,7 @@ import HexConverter from '../Modules/HexConverter/HexConverter';
 import EthWeiConverter from '../Modules/EthWeiConverter/EthWeiConverter';
 import KeccakConverter from '../Modules/Keccak-256/Keccak-256';
 import ChecksumAddress from '../Modules/Checksum/Checksum';
+import SmartContracts from '../Modules/SmartContracts/SmartContracts';
 
 import styles from './Converter.module.scss';
 
@@ -166,6 +167,37 @@ const Converter = () => {
       isChild: true,
       component: (name, description, index) => (
         <EncodeCalldataParameters
+          key={index + randomizer()}
+          name={name}
+          description={description}
+        />
+      ),
+    },
+    {
+      type: 'section',
+      name: 'Smart contract tools',
+    },
+    {
+      type: 'module',
+      name: 'Smart contract source code and ABI',
+      description: () => (
+        <div>
+          Input a smart contract address to retrieve its source code and ABI.
+          Note that the contract must be verified.
+          <br />
+          <br />
+          Find an example of verified smart contract on {' '}
+          <a
+            href="https://etherscan.io/token/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
+            target="_blank"
+          >
+            Etherscan
+          </a>.
+        </div>
+      ),
+      isChild: true,
+      component: (name, description, index) => (
+        <SmartContracts
           key={index + randomizer()}
           name={name}
           description={description}
