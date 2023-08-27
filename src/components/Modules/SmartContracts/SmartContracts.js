@@ -8,44 +8,60 @@ const SmartContracts = ({ name, description }) => {
   const [abi, setAbi] = useState(''); // create the state for ABI
   const [sourceCode, setSourceCode] = useState(''); // create the state for ABI
 
-// Function to handle API call
-const handleApiCall = async () => {
-  // Check if inputValue is a valid Ethereum address
-  if (!/^0x[a-fA-F0-9]{40}$/.test(inputValue)) {
-    console.log(`Invalid Ethereum address: ${inputValue}`);
-    return;
-  }
+  // Function to handle API call
+  const handleApiCall = async () => {
+    // Check if inputValue is a valid Ethereum address
+    if (!/^0x[a-fA-F0-9]{40}$/.test(inputValue)) {
+      console.log(`Invalid Ethereum address: ${inputValue}`);
+      return;
+    }
 
-  console.log(`Input: ${inputValue}`);
-  const response = await fetch('https://smart-contracts-api-xkooz.ondigitalocean.app/contractData', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ address: inputValue }), // Use inputValue as the address in the request body
-  });
+    console.log(`Input: ${inputValue}`);
+    const response = await fetch(
+      'https://smart-contracts-api-xkooz.ondigitalocean.app/contractData',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ address: inputValue }), // Use inputValue as the address in the request body
+      }
+    );
 
-  // Check if the response is ok before proceeding
-  if (!response.ok) {
-    console.error(`HTTP error! status: ${response.status}`);
-    const message = `Something went wrong with code ${response.status}. Please try again later.`
-    setContractName(message)
-    return;
-  }
+    // Check if the response is ok before proceeding
+    if (!response.ok) {
+      console.error(`HTTP error! status: ${response.status}`);
+      const message = `Something went wrong with code ${response.status}. Please try again later.`;
+      setContractName(message);
+      return;
+    }
 
-  const data = await response.json(); // Convert the response to JSON
-  console.log(data); // Log the response data
+    const data = await response.json(); // Convert the response to JSON
+    console.log(data); // Log the response data
 
-  setContractName(data.contractName)
-  setAbi(data.contractAbi)
-  setSourceCode(data.contractCode)
-};
-
+    setContractName(data.contractName);
+    setAbi(data.contractAbi);
+    setSourceCode(data.contractCode);
+  };
 
   return (
     <div className={styles.SmartContracts}>
-      <h1 className="module_header">{name}</h1>
-      <div className="module_description">{description()}</div>
+      <h1 className="module_header">Smart contract source code and ABI</h1>
+      <div className="module_description">
+        {' '}
+        Input a smart contract address to retrieve its source code and ABI. Note
+        that the contract must be verified.
+        <br />
+        <br />
+        Find an example of verified smart contract on{' '}
+        <a
+          href="https://etherscan.io/token/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
+          target="_blank"
+        >
+          Etherscan
+        </a>
+        .
+      </div>
       <InputWithLabel
         inputLabel="Smart contract address"
         inputPlaceholder="0xE592427A0AEce92De3Edee1F18E0157C05861564"
@@ -77,7 +93,7 @@ const handleApiCall = async () => {
         inputIsBordered={false}
         inputReadOnly={true}
         withCopyButton={true}
-      />  
+      />
 
       <InputWithLabel
         inputLabel="Smart Contract source code"
@@ -88,7 +104,7 @@ const handleApiCall = async () => {
         inputIsBordered={false}
         inputReadOnly={true}
         withCopyButton={true}
-      />  
+      />
     </div>
   );
 };

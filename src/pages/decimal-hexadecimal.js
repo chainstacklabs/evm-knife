@@ -1,10 +1,8 @@
 import Head from 'next/head';
-// import Converter from '../components/Converter/Converter';
 import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
-// import Navbar from '@/components/Navbar/Navbar';
-import Intro from '@/components/Modules/Intro/Intro';
+import HexConverter from '@/components/Modules/HexConverter/HexConverter';
 
-export default function Home() {
+export default function DecimalHexadecimalPage() {
   return (
     <>
       <Head>
@@ -19,7 +17,11 @@ export default function Home() {
       </Head>
 
       <LayoutWrapper>
-        <Intro />
+        <HexConverter
+          name={'Decimal → hexadecimal'}
+          type={'Decimal → hexadecimal'.toLowerCase().replace(' → ', '-')}
+          description={'Convert decimal to hexadecimal value.'}
+        />
       </LayoutWrapper>
     </>
   );

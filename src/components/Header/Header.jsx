@@ -41,7 +41,7 @@ export default function Header(props) {
           );
         })}
         {/* <ButtonBrand /> */}
-        <Button
+        {/* <Button
           onClick={() =>
             props.handleThemeChange(props.theme === 'light' ? 'dark' : 'light')
           }
@@ -49,7 +49,7 @@ export default function Header(props) {
           icon={
             <Icon component={props.theme === 'light' ? IconSun : IconMoon} />
           }
-        />
+        /> */}
       </div>
     </div>
   );

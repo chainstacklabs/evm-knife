@@ -1,0 +1,52 @@
+.intro {
+  padding-bottom: 60px;
+}
+
+.name {
+  font-weight: 800;
+  font-size: 60px;
+  line-height: 110%;
+  color: var(--color-typo-brand);
+  margin: 40px 0;
+  display: inline-block;
+}
+
+.powered {
+  color: var(--color-typo-brand);
+  font-weight: bold;
+}
+
+.section {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-typo-primary);
+  margin: 40px 0 16px 0;
+}
+
+.description {
+  margin-bottom: 24px;
+  line-height: 140%;
+  color: var(--color-typo-primary);
+}
+
+.grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: 1rem;
+}
+
+.card {
+  padding: 20px;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 12px;
+  &Name {
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  &Text {
+    font-size: 14px;
+    opacity: 0.4;
+  }
+}

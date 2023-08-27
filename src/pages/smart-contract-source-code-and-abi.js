@@ -1,10 +1,8 @@
 import Head from 'next/head';
-// import Converter from '../components/Converter/Converter';
 import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
-// import Navbar from '@/components/Navbar/Navbar';
-import Intro from '@/components/Modules/Intro/Intro';
+import SmartContracts from '@/components/Modules/SmartContracts/SmartContracts';
 
-export default function Home() {
+export default function SmartContractsPage() {
   return (
     <>
       <Head>
@@ -19,7 +17,7 @@ export default function Home() {
       </Head>
 
       <LayoutWrapper>
-        <Intro />
+        <SmartContracts />
       </LayoutWrapper>
     </>
   );

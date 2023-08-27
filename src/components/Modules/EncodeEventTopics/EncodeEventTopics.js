@@ -17,8 +17,22 @@ const EncodeEventTopics = ({ name, description }) => {
 
   return (
     <div className={styles.EncodeEventTopics}>
-      <h1 className="module_header">{name}</h1>
-      <p className="module_description">{description()}</p>
+      <h1 className="module_header">Encode event topics</h1>
+      <p className="module_description">
+        An event topic is a 32 bytes representation of an event parameter.
+        Encode a topic to use it to retrieve logs when querying your Chainstack
+        node.
+        <br />
+        <br />
+        Learn how to retrieve event logs using the{' '}
+        <a
+          href="https://docs.chainstack.com/reference/ethereum-getlogs"
+          target="_blank"
+        >
+          eth_getLogs ↗
+        </a>{' '}
+        method on the Chainstack developer portal.
+      </p>
       <InputWithLabel
         inputLabel="Topic to encode"
         inputPlaceholder="0x85BC2E8Aaad5dBc347db49Ea45D95486279eD918"

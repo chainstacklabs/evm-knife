@@ -18,7 +18,8 @@
     grid-area: 1 / 1 / 2 / 3;
     display: flex;
     flex-direction: column;
-    position: fixed;
+    overflow-y: scroll;
+    // position: fixed;
     // .divider {
     //   margin: 10px 0 18px 0;
     // }

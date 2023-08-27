@@ -14,9 +14,9 @@ import styles from './Converter.module.scss';
 
 const Converter = () => {
   // this ref array is used for anchor scrolling
-  const refs = useRef([]);
+  // const refs = useRef([]);
 
-  const randomizer = () => Math.random().toString(36).slice(2);
+  // const randomizer = () => Math.random().toString(36).slice(2);
 
   const converterContents = [
     {
@@ -186,13 +186,14 @@ const Converter = () => {
           Note that the contract must be verified.
           <br />
           <br />
-          Find an example of verified smart contract on {' '}
+          Find an example of verified smart contract on{' '}
           <a
             href="https://etherscan.io/token/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
             target="_blank"
           >
             Etherscan
-          </a>.
+          </a>
+          .
         </div>
       ),
       isChild: true,
@@ -254,19 +255,22 @@ const Converter = () => {
       name: 'Keccak-256',
       description: () => (
         <div>
-          Keccak256 is a cryptographic hash function that generates a unique, 
-          fixed-size string of bytes for each unique input it receives. 
-          This feature makes it useful for ensuring data integrity, as any change in the input data leads to a different hash output. 
-          It&apos;s virtually impossible to derive the original input from the hash output, making it a one-way function.
+          Keccak256 is a cryptographic hash function that generates a unique,
+          fixed-size string of bytes for each unique input it receives. This
+          feature makes it useful for ensuring data integrity, as any change in
+          the input data leads to a different hash output. It&apos;s virtually
+          impossible to derive the original input from the hash output, making
+          it a one-way function.
           <br />
           <br />
-          Find a list of examples where Keccak256 is used in the {' '}
+          Find a list of examples where Keccak256 is used in the{' '}
           <a
             href="https://docs.chainstack.com/docs/smart-contracts-glossary#keccak256"
             target="_blank"
           >
             Chainstack developer portal
-          </a>.
+          </a>
+          .
         </div>
       ),
       isChild: true,
@@ -283,18 +287,20 @@ const Converter = () => {
       name: 'Checksum address',
       description: () => (
         <div>
-        A checksummed address is a standard Ethereum address with certain characters capitalized to include a checksum validation. 
-        Checksumming is a way of having error-detection codes in an Ethereum address. 
-        Checksumming aims to prevent errors when an address is typed manually.
+          A checksummed address is a standard Ethereum address with certain
+          characters capitalized to include a checksum validation. Checksumming
+          is a way of having error-detection codes in an Ethereum address.
+          Checksumming aims to prevent errors when an address is typed manually.
           <br />
           <br />
-          Find more about checksum in Ethereum in the {' '}
+          Find more about checksum in Ethereum in the{' '}
           <a
             href="https://docs.chainstack.com/docs/smart-contracts-glossary?kjh#address-checksumming"
             target="_blank"
           >
             Chainstack developer portal
-          </a>.
+          </a>
+          .
         </div>
       ),
       isChild: true,
@@ -311,7 +317,7 @@ const Converter = () => {
   return (
     <div className={styles.converter}>
       <div className={styles.navigationBar}>
-        {converterContents.map((item, index) => {
+        {/* {converterContents.map((item, index) => {
           if (item.type === 'section') {
             return (
               <div key={index + randomizer()} className={styles.sectionName}>
@@ -322,9 +328,6 @@ const Converter = () => {
           if (item.type === 'module') {
             return (
               <>
-                {/* {item.isChild === false && (
-                  <div className={styles.divider}>------</div>
-                )} */}
                 <button
                   className={styles.moduleButton}
                   key={index + randomizer()}
@@ -341,11 +344,11 @@ const Converter = () => {
               </>
             );
           }
-        })}
+        })} */}
       </div>
 
       <div className={styles.modulesList}>
-        {converterContents.map((item, index) => {
+        {/* {converterContents.map((item, index) => {
           if (item.type === 'module') {
             return (
               <div
@@ -359,7 +362,7 @@ const Converter = () => {
               </div>
             );
           }
-        })}
+        })} */}
       </div>
     </div>
   );

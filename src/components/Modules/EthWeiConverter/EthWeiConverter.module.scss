@@ -1,7 +1,8 @@
 .EthWeiConverter {
   .numberInput {
     margin-bottom: 20px;
-    width: calc(750px / 2);
+    // width: calc(750px / 2);
+    width: 750px;
     display: flex;
     &:last-child {
       margin-bottom: 0px;
