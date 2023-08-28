@@ -1,9 +1,24 @@
 import React from 'react';
 import styles from './Intro.module.scss';
+import logoSquareRounded from '../../../../public/images/logoSquareRounded.svg';
+import converter from '../../../../public/images/converter.svg';
+import scEvents from '../../../../public/images/sc-events.svg';
+import sc from '../../../../public/images/sc.svg';
+import solidity from '../../../../public/images/solidity.svg';
+import Image from 'next/image';
 
 const Intro = () => {
   return (
     <div className={styles.intro}>
+      <div className={styles.powered}>
+        <Image
+          src={logoSquareRounded}
+          alt="Chainstack labs"
+          height={24}
+          width={24}
+        />
+        <span>Powered by Chainstack</span>
+      </div>
       <div className={styles.name}>
         The EVM
         <br /> Swiss Army Knife
@@ -15,37 +30,40 @@ const Intro = () => {
         commonly used to speed up development.
       </div>
 
-      <div className={styles.powered}>Powered by Chainstack</div>
-
-      {/* <div className={styles.grid}>
+      <div className={styles.grid}>
         {[
           {
             name: 'Smart contracts event tools',
             text: 'Event logs are a type of log entry in the Ethereum blockchain that contains information about events that have been triggered by smart contracts. Event logs are created when a contract emits an event in Solidity.',
+            icon: () => <Image src={scEvents} height={60} width={60} />,
           },
           {
             name: 'Solidity CALLDATA tools',
             text: 'In Solidity, CALLDATA refers to the input data that is sent along with a function call to a contract on the Ethereum blockchain. When you invoke a function on a smart contract, you can provide arguments or parameters to that function. These arguments, along with information about the function being called, are encoded into a hexadecimal string known as the CALLDATA, and it is included in the transaction that invokes the function.',
+            icon: () => <Image src={solidity} height={60} width={60} />,
           },
           {
             name: 'Smart contract tools',
             text: 'A smart contract is a self-executing digital contract with the terms of the agreement directly written into code. It runs on a blockchain platform, most commonly associated with the Ethereum blockchain, but also present in other blockchain networks like Binance Smart Chain, Cardano, and more. The term "smart contract" was first coined by computer scientist and legal scholar Nick Szabo in 1994.',
+            icon: () => <Image src={sc} height={60} width={60} />,
           },
           {
             name: 'Converter',
             text: 'Just converting data from one type to another.',
+            icon: () => <Image src={converter} height={60} width={60} />,
           },
         ].map((item, idx) => {
           return (
             <div key={idx} className={styles.card}>
+              {item.icon()}
               <div className={styles.cardName}>{item.name}</div>
               <div className={styles.cardText}>{item.text}</div>
             </div>
           );
         })}
-      </div> */}
+      </div>
 
-      <div className={styles.section}>Smart contracts event tools</div>
+      {/* <div className={styles.section}>Smart contracts event tools</div>
       <div className={styles.description}>
         Event logs are a type of log entry in the Ethereum blockchain that
         contains information about events that have been triggered by smart
@@ -88,7 +106,7 @@ const Intro = () => {
       <div className={styles.section}>Converter</div>
       <div className={styles.description}>
         Just converting data from one type to another.
-      </div>
+      </div> */}
     </div>
   );
 };
