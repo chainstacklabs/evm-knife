@@ -62,3 +62,7 @@ a {
 .module_description {
   margin-bottom: 32px;
 }
+
+.module_header {
+  margin: 32px 0;
+}
