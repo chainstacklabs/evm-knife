@@ -1,24 +1,36 @@
 import React from 'react';
-import styles from './Intro.module.scss';
+import { Button } from 'antd';
+import Image from 'next/image';
+
 import logoSquareRounded from '../../../../public/images/logoSquareRounded.svg';
 import converter from '../../../../public/images/converter.svg';
 import scEvents from '../../../../public/images/sc-events.svg';
+
+import IconBulb from '@/components/Icons/IconBulb';
+
 import sc from '../../../../public/images/sc.svg';
 import solidity from '../../../../public/images/solidity.svg';
-import Image from 'next/image';
+import styles from './Intro.module.scss';
 
 const Intro = () => {
+  const iconSize = 32;
+
   return (
     <div className={styles.intro}>
-      <div className={styles.powered}>
+      <a
+        className={styles.powered}
+        href="https://chainstack.com/"
+        target="_blank"
+      >
         <Image
           src={logoSquareRounded}
           alt="Chainstack labs"
           height={24}
           width={24}
+          className={styles.imgRotation}
         />
-        <span>Powered by Chainstack</span>
-      </div>
+        <span>Powered by Chainstack ↗</span>
+      </a>
       <div className={styles.name}>
         The EVM
         <br /> Swiss Army Knife
@@ -35,22 +47,28 @@ const Intro = () => {
           {
             name: 'Smart contracts event tools',
             text: 'Easily work with event logs. Generate event signatures and encode event topics for efficient log filtering. Ideal for real-time monitoring, debugging, and analytics.',
-            icon: () => <Image src={scEvents} height={60} width={60} />,
+            icon: () => (
+              <Image src={scEvents} height={iconSize} width={iconSize} />
+            ),
           },
           {
             name: 'Solidity CALLDATA tools',
             text: 'Enhance your smart contract development with our Solidity calldata utilities. Generate function signatures for contract interaction and encode calldata parameters. A must-have for seamless contract execution and data management.',
-            icon: () => <Image src={solidity} height={60} width={60} />,
+            icon: () => (
+              <Image src={solidity} height={iconSize} width={iconSize} />
+            ),
           },
           {
             name: 'Smart contract tools',
             text: 'Simplify your blockchain development workflow with our ABI and Code Retrieval Tool. Input a contract address to instantly fetch its ABI and source code. Essential for contract interaction, auditing, and reverse engineering.',
-            icon: () => <Image src={sc} height={60} width={60} />,
+            icon: () => <Image src={sc} height={iconSize} width={iconSize} />,
           },
           {
             name: 'Converters',
             text: 'Streamline your development process with our all-in-one Blockchain Value Converter. Effortlessly convert between Wei, Gwei, and Ether, or transform hex to decimal and vice versa. Also includes Keccak-256 hashing and checksum address generation. A comprehensive tool for all your blockchain conversion needs.',
-            icon: () => <Image src={converter} height={60} width={60} />,
+            icon: () => (
+              <Image src={converter} height={iconSize} width={iconSize} />
+            ),
           },
         ].map((item, idx) => {
           return (
@@ -107,6 +125,24 @@ const Intro = () => {
       <div className={styles.description}>
         Just converting data from one type to another.
       </div> */}
+
+      <div className={styles.informer}>
+        <div className={styles.left}>
+          <IconBulb />
+          <div className={styles.lines}>
+            <div>Missing tool?</div>
+            <div>Leave a request for a new one</div>
+          </div>
+        </div>
+        <Button
+          size="large"
+          type="link"
+          href="https://ideas.chainstack.com/feature-requests"
+          target="_blank"
+        >
+          Leave a request ↗
+        </Button>
+      </div>
     </div>
   );
 };

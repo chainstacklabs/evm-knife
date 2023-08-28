@@ -70,6 +70,45 @@ const LayoutWrapper = ({ children }) => {
       getItem('Checksum address', 'checksum-address'),
     ]),
   ];
+  // const items = [
+  //   getItem('Home', 'home', <AppstoreOutlined />),
+
+  //   { type: 'divider' },
+
+  //   getItem('Smart contract event tools', '2', <FileAddOutlined />, [
+  //     getItem('Generate event signature', 'generate-event-signature'),
+  //     getItem('Encode event topics', 'encode-event-topics'),
+  //   ]),
+
+  //   { type: 'divider' },
+
+  //   getItem('Solidity calldata tools', '3', <ExpandOutlined />, [
+  //     getItem(
+  //       'Generate Solidity functions signature',
+  //       'generate-solidity-functions-signature'
+  //     ),
+  //     getItem('Encode CALLDATA parameters', 'encode-calldata-parameters'),
+  //   ]),
+
+  //   { type: 'divider' },
+
+  //   getItem('Smart contract tools', '4', <SettingOutlined />, [
+  //     getItem(
+  //       'Smart contract source code and ABI',
+  //       'smart-contract-source-code-and-abi'
+  //     ),
+  //   ]),
+
+  //   { type: 'divider' },
+
+  //   getItem('Converters', '5', <MailOutlined />, [
+  //     getItem('Decimal → hexadecimal', 'decimal-hexadecimal'),
+  //     getItem('Hexadecimal → decimal', 'hexadecimal-decimal'),
+  //     getItem('Eth – Wei', 'eth-wei'),
+  //     getItem('Keccak-256', 'keccak-256'),
+  //     getItem('Checksum address', 'checksum-address'),
+  //   ]),
+  // ];
 
   const onClick = (e) => {
     setActiveNavItem(e.key);

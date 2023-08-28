@@ -16,8 +16,20 @@
   font-weight: bold;
   display: flex;
   align-items: center;
+  padding-top: 40px;
+  cursor: pointer;
+  text-decoration: none;
+  .imgRotation {
+    transition: transform 0.5s ease-in-out;
+  }
   span {
     margin-left: 10px;
+  }
+  &:hover {
+    color: #005abb;
+    .imgRotation {
+      transform: rotate(360deg);
+    }
   }
 }
 
@@ -43,15 +55,45 @@
 }
 
 .card {
-  // padding: 20px;
-  // border: 1px solid rgb(201, 201, 201);
-  // border-radius: 12px;
   &Name {
     font-weight: bold;
     margin-bottom: 12px;
+    margin-top: 16px;
   }
   &Text {
     font-size: 14px;
     opacity: 0.4;
+    line-height: 140%;
+  }
+}
+
+.informer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 18px 20px;
+  margin-top: 48px;
+  border-radius: 12px;
+  border: 1px solid rgb(228, 228, 228);
+  .left {
+    display: flex;
+    align-items: center;
+    align-items: flex-start;
+
+    .lines {
+      display: flex;
+      flex-direction: column;
+      margin-left: 16px;
+      div:first-child {
+        font-weight: bold;
+        margin-bottom: 4px;
+        font-size: 24px;
+      }
+      div:last-child {
+        font-size: 18px;
+        opacity: 0.4;
+        line-height: 140%;
+      }
+    }
   }
 }
