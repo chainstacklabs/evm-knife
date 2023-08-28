@@ -26,7 +26,7 @@ const HexConverter = ({ name, description, type }) => {
   return (
     <div className={styles.HexConverter}>
       <h1 className="module_header">{name}</h1>
-      <p className="module_description">{description}</p>
+      <div className="module_description">{description}</div>
       {type === 'decimal-hexadecimal' && (
         <>
           <InputWithLabel

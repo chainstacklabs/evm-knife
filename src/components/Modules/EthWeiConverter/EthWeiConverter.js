@@ -42,9 +42,9 @@ const EthWeiConverter = ({ name, description }) => {
   return (
     <div className={styles.EthWeiConverter}>
       <h1 className="module_header">Eth – Wei</h1>
-      <p className="module_description">
+      <div className="module_description">
         Conversion between Ether and its sub-units.
-      </p>
+      </div>
       {[
         { name: 'ether', precision: 18 },
         { name: 'milliether', precision: 15 },

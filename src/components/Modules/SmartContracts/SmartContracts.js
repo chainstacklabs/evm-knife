@@ -12,11 +12,11 @@ const SmartContracts = ({ name, description }) => {
   const handleApiCall = async () => {
     // Check if inputValue is a valid Ethereum address
     if (!/^0x[a-fA-F0-9]{40}$/.test(inputValue)) {
-      console.log(`Invalid Ethereum address: ${inputValue}`);
+      // console.log(`Invalid Ethereum address: ${inputValue}`);
       return;
     }
 
-    console.log(`Input: ${inputValue}`);
+    // console.log(`Input: ${inputValue}`);
     const response = await fetch(
       'https://smart-contracts-api-xkooz.ondigitalocean.app/contractData',
       {
@@ -58,7 +58,7 @@ const SmartContracts = ({ name, description }) => {
           href="https://etherscan.io/token/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
           target="_blank"
         >
-          Etherscan
+          Etherscan ↗
         </a>
         .
       </div>

@@ -33,7 +33,7 @@ const KeccakConverter = ({ name, description }) => {
           href="https://docs.chainstack.com/docs/smart-contracts-glossary#keccak256"
           target="_blank"
         >
-          Chainstack developer portal
+          Chainstack developer portal ↗
         </a>
         .
       </div>

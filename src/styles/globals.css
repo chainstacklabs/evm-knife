@@ -58,3 +58,7 @@ h1 {
 a {
   color: var(--color-typo-brand);
 }
+
+.module_description {
+  margin-bottom: 32px;
+}

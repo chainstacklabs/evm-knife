@@ -45,7 +45,7 @@ const ChecksumAddress = ({ name, description }) => {
           href="https://docs.chainstack.com/docs/smart-contracts-glossary?kjh#address-checksumming"
           target="_blank"
         >
-          Chainstack developer portal
+          Chainstack developer portal ↗
         </a>
         .
       </div>
