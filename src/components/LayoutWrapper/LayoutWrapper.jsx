@@ -1,39 +1,138 @@
-import React from 'react';
-import { ConfigProvider, theme } from 'antd';
-import useLocalStorage from '@/helpers/useLocalStorage';
-import Header from '../Header/Header';
+import React, { useState, useEffect } from 'react';
 import styles from './LayoutWrapper.module.scss';
+import { useRouter } from 'next/router';
+
+import { Menu } from 'antd';
+import {
+  // AppstoreOutlined,
+  // MailOutlined,
+  // SettingOutlined,
+  // ExpandOutlined,
+  // FileAddOutlined,
+  HomeOutlined,
+} from '@ant-design/icons';
+
+// import IconHome from '../Icons/IconHome';
 
 const LayoutWrapper = ({ children }) => {
-  const [uiTheme, setUiTheme] = useLocalStorage(
-    'chainstack-faucet-app-theme',
-    'light'
+  const router = useRouter();
+  const [activeNavItem, setActiveNavItem] = useState(
+    router.pathname === '/' ? 'home' : router.pathname
   );
-  const themeClassName = (theme) => {
-    return `labs-theme-${theme}`;
+
+  useEffect(() => {
+    router.push(activeNavItem === 'home' ? '/' : activeNavItem);
+  }, [activeNavItem]);
+
+  function getItem(label, key, icon, children, type) {
+    return {
+      key,
+      icon,
+      children,
+      label,
+      type,
+    };
+  }
+
+  const items = [
+    getItem('Home', 'home', <HomeOutlined />),
+
+    { type: 'divider' },
+
+    getItem('Smart contract event tools', '2', <></>, [
+      getItem('Generate event signature', 'generate-event-signature'),
+      getItem('Encode event topics', 'encode-event-topics'),
+    ]),
+
+    { type: 'divider' },
+
+    getItem('Solidity calldata tools', '3', <></>, [
+      getItem(
+        'Generate Solidity functions signature',
+        'generate-solidity-functions-signature'
+      ),
+      getItem('Encode CALLDATA parameters', 'encode-calldata-parameters'),
+    ]),
+
+    { type: 'divider' },
+
+    getItem('Smart contract tools', '4', <></>, [
+      getItem(
+        'Smart contract source code and ABI',
+        'smart-contract-source-code-and-abi'
+      ),
+    ]),
+
+    { type: 'divider' },
+
+    getItem('Converters', '5', <></>, [
+      getItem('Decimal → hexadecimal', 'decimal-hexadecimal'),
+      getItem('Hexadecimal → decimal', 'hexadecimal-decimal'),
+      getItem('Eth – Wei', 'eth-wei'),
+      getItem('Keccak-256', 'keccak-256'),
+      getItem('Checksum address', 'checksum-address'),
+    ]),
+  ];
+  // const items = [
+  //   getItem('Home', 'home', <AppstoreOutlined />),
+
+  //   { type: 'divider' },
+
+  //   getItem('Smart contract event tools', '2', <FileAddOutlined />, [
+  //     getItem('Generate event signature', 'generate-event-signature'),
+  //     getItem('Encode event topics', 'encode-event-topics'),
+  //   ]),
+
+  //   { type: 'divider' },
+
+  //   getItem('Solidity calldata tools', '3', <ExpandOutlined />, [
+  //     getItem(
+  //       'Generate Solidity functions signature',
+  //       'generate-solidity-functions-signature'
+  //     ),
+  //     getItem('Encode CALLDATA parameters', 'encode-calldata-parameters'),
+  //   ]),
+
+  //   { type: 'divider' },
+
+  //   getItem('Smart contract tools', '4', <SettingOutlined />, [
+  //     getItem(
+  //       'Smart contract source code and ABI',
+  //       'smart-contract-source-code-and-abi'
+  //     ),
+  //   ]),
+
+  //   { type: 'divider' },
+
+  //   getItem('Converters', '5', <MailOutlined />, [
+  //     getItem('Decimal → hexadecimal', 'decimal-hexadecimal'),
+  //     getItem('Hexadecimal → decimal', 'hexadecimal-decimal'),
+  //     getItem('Eth – Wei', 'eth-wei'),
+  //     getItem('Keccak-256', 'keccak-256'),
+  //     getItem('Checksum address', 'checksum-address'),
+  //   ]),
+  // ];
+
+  const onClick = (e) => {
+    setActiveNavItem(e.key);
   };
 
   return (
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: '#007BFF',
-        },
-        algorithm:
-          uiTheme === 'light' ? theme.defaultAlgorithm : theme.darkAlgorithm,
-      }}
-    >
-      <div className={themeClassName(uiTheme)}>
-        <div className={styles.app}>
-          <Header
-            theme={uiTheme}
-            currentTheme={theme}
-            handleThemeChange={setUiTheme}
-          />
-          <div className={styles.content}>{children}</div>
+    <div className="labs-theme-light">
+      <div className={styles.app}>
+        <Menu
+          onClick={onClick}
+          selectedKeys={[activeNavItem.replace('/', '')]}
+          defaultOpenKeys={['2', '3', '4', '5']}
+          mode="inline"
+          items={items}
+          className={styles.navbar}
+        />
+        <div className={styles.content}>
+          <div className={styles.contentWrapper}>{children}</div>
         </div>
       </div>
-    </ConfigProvider>
+    </div>
   );
 };
 

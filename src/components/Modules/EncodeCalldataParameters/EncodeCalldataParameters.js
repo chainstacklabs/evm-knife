@@ -14,8 +14,22 @@ const EncodeCalldataParameters = ({ name, description }) => {
 
   return (
     <div className={styles.EncodeCalldataParameters}>
-      <h1 className="module_header">{name}</h1>
-      <div className="module_description">{description()}</div>
+      <h1 className="module_header">Encode CALLDATA parameters</h1>
+      <div className="module_description">
+        Parameters passed to the function in CALLDATA are a 32 bytes
+        representation of the data being passed.
+        <br />
+        <br />
+        Learn how the encoding process work following the{' '}
+        <a
+          href="https://docs.chainstack.com/recipes/how-to-encode-calldata-parameters-to-programmatically-interact-with-a-smart-contract"
+          target="_blank"
+        >
+          How to encode callData parameters to programmatically interact with a
+          smart contract ↗
+        </a>{' '}
+        recipe in the Chainstack developer portal.
+      </div>
       <InputWithLabel
         inputLabel="Parameter to encode"
         inputPlaceholder="0xdfd5293d8e347dfe59e90efd55b2956a1343963d"

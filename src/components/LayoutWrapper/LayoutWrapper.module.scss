@@ -1,15 +1,22 @@
 .app {
-  background-color: var(--color-bg-secondary);
-  width: 100vw;
   height: 100vh;
-
   color: var(--color-typo-primary);
 }
 
 .content {
   background-color: var(--color-bg-primary);
-  margin: 0 20px;
-  border-radius: 20px;
-  height: calc(100vh - 88px - 20px);
-  overflow: scroll;
+  margin-left: 350px;
+  &Wrapper {
+    padding: 0 40px 0 40px;
+    max-width: 750px;
+    margin: auto;
+  }
+}
+
+.navbar {
+  width: 350px;
+  height: 100vh;
+  position: fixed;
+  overflow-y: scroll;
+  border-left: 1px solid rgba(5, 5, 5, 0.06);
 }
