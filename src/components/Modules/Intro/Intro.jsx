@@ -1,16 +1,16 @@
-import React from 'react';
-import { Button } from 'antd';
-import Image from 'next/image';
+import React from "react";
+import { Button } from "antd";
+import Image from "next/image";
 
-import logoSquareRounded from '../../../../public/images/logoSquareRounded.svg';
-import converter from '../../../../public/images/converter.svg';
-import scEvents from '../../../../public/images/sc-events.svg';
+import logoSquareRounded from "../../../../public/images/logoSquareRounded.svg";
+import converter from "../../../../public/images/converter.svg";
+import scEvents from "../../../../public/images/sc-events.svg";
 
-import IconBulb from '@/components/Icons/IconBulb';
+import IconBulb from "@/components/Icons/IconBulb";
 
-import sc from '../../../../public/images/sc.svg';
-import solidity from '../../../../public/images/solidity.svg';
-import styles from './Intro.module.scss';
+import sc from "../../../../public/images/sc.svg";
+import solidity from "../../../../public/images/solidity.svg";
+import styles from "./Intro.module.scss";
 
 const Intro = () => {
   const iconSize = 32;
@@ -45,27 +45,27 @@ const Intro = () => {
       <div className={styles.grid}>
         {[
           {
-            name: 'Smart contracts event tools',
-            text: 'Easily work with event logs. Generate event signatures and encode event topics for efficient log filtering. Ideal for real-time monitoring, debugging, and analytics.',
+            name: "Smart contracts event tools",
+            text: "Easily work with event logs. Generate event signatures and encode event topics for efficient log filtering. Ideal for real-time monitoring, debugging, and analytics.",
             icon: () => (
               <Image src={scEvents} height={iconSize} width={iconSize} />
             ),
           },
           {
-            name: 'Solidity CALLDATA tools',
-            text: 'Enhance your smart contract development with our Solidity calldata utilities. Generate function signatures for contract interaction and encode calldata parameters. A must-have for seamless contract execution and data management.',
+            name: "Solidity CALLDATA tools",
+            text: "Enhance your smart contract development with our Solidity calldata utilities. Generate function signatures for contract interaction and encode calldata parameters. Useful for seamless contract execution and data management.",
             icon: () => (
               <Image src={solidity} height={iconSize} width={iconSize} />
             ),
           },
           {
-            name: 'Smart contract tools',
-            text: 'Simplify your blockchain development workflow with our ABI and Code Retrieval Tool. Input a contract address to instantly fetch its ABI and source code. Essential for contract interaction, auditing, and reverse engineering.',
+            name: "Smart contract tools",
+            text: "Simplify your blockchain development workflow with our ABI and Code Retrieval Tool. Input a contract address to instantly fetch its ABI and source code. Ideal for contract interaction, auditing, and reverse engineering.",
             icon: () => <Image src={sc} height={iconSize} width={iconSize} />,
           },
           {
-            name: 'Converters',
-            text: 'Streamline your development process with our all-in-one Blockchain Value Converter. Effortlessly convert between Wei, Gwei, and Ether, or transform hex to decimal and vice versa. Also includes Keccak-256 hashing and checksum address generation. A comprehensive tool for all your blockchain conversion needs.',
+            name: "Converters",
+            text: "Streamline your development process with our all-in-one Blockchain Value Converter. Effortlessly convert between Wei, Gwei, and Ether, or transform hex to decimal and vice versa. Also includes Keccak-256 hashing and checksum address generation.",
             icon: () => (
               <Image src={converter} height={iconSize} width={iconSize} />
             ),
