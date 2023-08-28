@@ -4,12 +4,15 @@ import { useRouter } from 'next/router';
 
 import { Menu } from 'antd';
 import {
-  AppstoreOutlined,
-  MailOutlined,
-  SettingOutlined,
-  ExpandOutlined,
-  FileAddOutlined,
+  // AppstoreOutlined,
+  // MailOutlined,
+  // SettingOutlined,
+  // ExpandOutlined,
+  // FileAddOutlined,
+  HomeOutlined,
 } from '@ant-design/icons';
+
+// import IconHome from '../Icons/IconHome';
 
 const LayoutWrapper = ({ children }) => {
   const router = useRouter();
@@ -32,18 +35,18 @@ const LayoutWrapper = ({ children }) => {
   }
 
   const items = [
-    getItem('Home', 'home', <AppstoreOutlined />),
+    getItem('Home', 'home', <HomeOutlined />),
 
     { type: 'divider' },
 
-    getItem('Smart contract event tools', '2', <FileAddOutlined />, [
+    getItem('Smart contract event tools', '2', <></>, [
       getItem('Generate event signature', 'generate-event-signature'),
       getItem('Encode event topics', 'encode-event-topics'),
     ]),
 
     { type: 'divider' },
 
-    getItem('Solidity calldata tools', '3', <ExpandOutlined />, [
+    getItem('Solidity calldata tools', '3', <></>, [
       getItem(
         'Generate Solidity functions signature',
         'generate-solidity-functions-signature'
@@ -53,7 +56,7 @@ const LayoutWrapper = ({ children }) => {
 
     { type: 'divider' },
 
-    getItem('Smart contract tools', '4', <SettingOutlined />, [
+    getItem('Smart contract tools', '4', <></>, [
       getItem(
         'Smart contract source code and ABI',
         'smart-contract-source-code-and-abi'
@@ -62,7 +65,7 @@ const LayoutWrapper = ({ children }) => {
 
     { type: 'divider' },
 
-    getItem('Converters', '5', <MailOutlined />, [
+    getItem('Converters', '5', <></>, [
       getItem('Decimal → hexadecimal', 'decimal-hexadecimal'),
       getItem('Hexadecimal → decimal', 'hexadecimal-decimal'),
       getItem('Eth – Wei', 'eth-wei'),
