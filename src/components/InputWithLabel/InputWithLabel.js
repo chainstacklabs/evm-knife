@@ -11,10 +11,12 @@ const InputWithLabel = ({
   inputAllowClear,
   inputShowCount,
   inputIsBordered,
+  withConvertButton = false,
+  onConvertButtonClick,
   inputReadOnly,
   withCopyButton,
-  withSendButton = false, // New prop for the Send button
-  onSendButtonClick, // New prop for the Send button click handler
+  withSendButton = false,
+  onSendButtonClick,
   inputOnlyNumbers = false,
 }) => {
   const [isCopied, setIsCopied] = useState(false);
@@ -56,7 +58,6 @@ const InputWithLabel = ({
   return (
     <div className={styles.InputWithLabel}>
       <div className={styles.inputLabel}>{inputLabel}</div>
-
       <Space.Compact size="large" style={{ width: '100%' }}>
         {configuredInput()}
         {withCopyButton && (
@@ -72,11 +73,11 @@ const InputWithLabel = ({
             {isCopied === false ? 'Copy result' : 'Copied!'}
           </Button>
         )}
-        {withSendButton && (
+        {withConvertButton && (
           <Button
-            onClick={onSendButtonClick} // Call the handler passed in as a prop
+            onClick={onConvertButtonClick}
           >
-            Send
+            Convert
           </Button>
         )}
       </Space.Compact>

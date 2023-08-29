@@ -68,9 +68,10 @@ const LayoutWrapper = ({ children }) => {
     getItem('Converters', '5', <></>, [
       getItem('Decimal → hexadecimal', 'decimal-hexadecimal'),
       getItem('Hexadecimal → decimal', 'hexadecimal-decimal'),
-      getItem('Eth – Wei', 'eth-wei'),
+      getItem('Eth ⇆ Wei', 'eth-wei'),
       getItem('Keccak-256', 'keccak-256'),
       getItem('Checksum address', 'checksum-address'),
+      getItem('ENS → address', 'ens-to-address'),
     ]),
   ];
   // const items = [

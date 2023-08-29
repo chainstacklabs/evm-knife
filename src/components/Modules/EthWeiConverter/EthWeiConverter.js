@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./EthWeiConverter.module.scss";
-import { InputNumber, Button } from "antd";
+import { InputNumber, Button, Tooltip } from "antd";
 import { CopyOutlined, CheckOutlined } from "@ant-design/icons";
 
 const EthWeiConverter = ({ name, description }) => {
@@ -83,9 +83,12 @@ const EthWeiConverter = ({ name, description }) => {
               }}
               addonBefore={
                 <div style={{ width: "75px", textAlign: "right" }}>
-                  {item.name}
+                  <Tooltip title={`Decimal Precision: ${item.precision}`}>
+                    {item.name}
+                  </Tooltip>
                 </div>
               }
+              
             />
 
             <Button
