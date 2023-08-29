@@ -63,7 +63,7 @@ const SmartContracts = ({ name, description }) => {
         inputAllowClear
         inputShowCount
         withCopyButton={false}
-        withSendButton={true}
+        withConvertButton={true}
         onSendButtonClick={handleApiCall} // Call handleApiCall when the Send button is clicked
       />
 
