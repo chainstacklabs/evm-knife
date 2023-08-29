@@ -23,7 +23,7 @@ const EnsToAddressConverter = () => {
     <div className={styles.EnsToAddressConverter}>
       <h1 className="module_header">ENS to Address Converter</h1>
       <div className="module_description">
-        Convert a ENS, Ethereum Name Service, name to an Ethereum address.
+        Convert an ENS name to an Ethereum address.
       </div>
 
       <InputWithLabel
