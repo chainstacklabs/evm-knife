@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
-import InputWithLabel from '@/components/InputWithLabel/InputWithLabel';
-import Web3 from 'web3';
-import { Button, Tooltip } from 'antd';
-import styles from './EnsToAddressConverter.module.scss';
+import React, { useState } from "react";
+import InputWithLabel from "@/components/InputWithLabel/InputWithLabel";
+import Web3 from "web3";
+import { Button, Tooltip } from "antd";
+import styles from "./EnsToAddressConverter.module.scss";
 
 const EnsToAddressConverter = () => {
-  const [ensName, setEnsName] = useState('');
-  const [ethAddress, setEthAddress] = useState('');
+  const [ensName, setEnsName] = useState("");
+  const [ethAddress, setEthAddress] = useState("");
 
-  const web3 = new Web3(new Web3.providers.HttpProvider(process.env.NEXT_PUBLIC_CHAINSTACK_RPC));
+  const web3 = new Web3(
+    new Web3.providers.HttpProvider(process.env.NEXT_PUBLIC_CHAINSTACK_RPC)
+  );
 
   const convertEnsToAddress = async () => {
+    console.log("Resovling ENS...");
     try {
       const address = await web3.eth.ens.getAddress(ensName);
+      console.log(`${ensName} resolves to ${address}`);
       setEthAddress(address);
     } catch (error) {
       setEthAddress("Invalid ENS address");
@@ -33,7 +37,7 @@ const EnsToAddressConverter = () => {
         withConvertButton={true}
         onConvertButtonClick={convertEnsToAddress}
       />
-      
+
       <InputWithLabel
         inputLabel="Ethereum Address"
         inputPlaceholder=""
