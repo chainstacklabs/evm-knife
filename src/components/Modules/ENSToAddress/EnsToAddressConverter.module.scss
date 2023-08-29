@@ -1,0 +1,16 @@
+.EthWeiConverter { 
+    .result {
+      margin-top: 1em;
+  
+      .addressLabel {
+        font-weight: bold;
+      }
+  
+      .addressValue {
+        margin-left: 0.5em;
+        color: blue;
+        cursor: pointer;
+      }
+    }
+  }
+  
