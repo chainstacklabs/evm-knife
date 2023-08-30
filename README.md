@@ -1,5 +1,3 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 ## Getting Started
 
 First, run the development server:
@@ -14,25 +12,171 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Application
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+App is built uisng Next [Pages Router](https://nextjs.org/docs) and [Ant Design UI](https://ant.design/components/overview) library for React.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## What is module?
 
-## Learn More
+In terms of this app module is standalone component with isolated logic inside. It can use reusable components, but all logic must be performed inside module component's bounds.
 
-To learn more about Next.js, take a look at the following resources:
+Module consists of:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Heading (required)
+- Description (optional but highly recommended)
+- Module logic (required)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Each module is represented in left navigation bar and must belong to some group. If no group is suitable, you can create a new one.
 
-## Deploy on Vercel
+Each module must have unique URL in app (see below).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Modules are stored at `src/components/Modules/`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## How to add a new module?
+
+### Create a new module component
+
+Create a new module with unique name with camel case. Eg: `MyNewModule.js`. Exported function must have the same name. Additional css is ok. Eg:
+
+```jsx
+export default function MyNewModule {
+
+  ...some logic...
+
+  return ...
+}
+```
+
+It is ok to use additional components for UI. You can keep them here `src/components/`.
+
+### Create a new page for module
+
+Routing in next.js is performed automatically. All you need is to add js file to `src/pages`.
+
+Keep file name consistent, but here it must be divided with dashes, because urls dont support camel case. New js file will be called: `src/pages/my-new-module.js`.
+
+Big difference from the prevoius step is the following. Since we create a new **page** for new module and it is still must be readable, we call new component inside page file with `Page` postfix in camel case:
+
+```jsx
+export default function MyNewModulePage() {
+  return (
+    <>
+      <Head>
+        ...
+      </Head>
+
+      <LayoutWrapper>
+        <MyNewModule />   <- this is your module
+      </LayoutWrapper>
+    </>
+  );
+}
+```
+
+> Notice that every module must be wrapped in `LayoutWrapper`, this component is responsible for position on the page and includes left navigation bar inside.
+
+### Add new module in navigation bar
+
+Navigation bar config is located at `src/components/LayoutWrapper/LayoutWrapper.jsx` in `items` array.
+
+---
+
+**If you adding new module to existing group:**
+
+Find a target group in array. You can find group names in functions as the first argument, eg for `Converters`:
+
+```js
+/**
+ * @param {string} Group name displayed on navigation bar
+ * @param {string} Unique group/subgroup item ID
+ * @param {ReactNode} Icon used near group label
+ * @param {Array} Group of subitems
+ */
+
+getItem('Converters', '5', <></>, [
+  getItem('Decimal → hexadecimal', 'decimal-hexadecimal'),
+  ...
+  getItem('ENS → address', 'ens-to-address'),
+  getItem('My new module', 'my-new-module') <- this is your module
+]),
+```
+
+> Notice that your new module's Unique id must be the same as new page file's name, because this ID is used to generate routes between different pages inside the app.
+
+---
+
+**If you adding new module to a new group:**
+
+Come up with a name to a new group and add it to config:
+
+```js
+/**
+ * @param {string} Group name displayed on navigation bar
+ * @param {string} Unique group/subgroup item ID
+ * @param {ReactNode} Icon used near group label
+ * @param {Array} Group of subitems
+ */
+
+...
+getItem('Converters', '5', ...),
+
+getItem('New group for my module', '6', <></>, [
+  getItem('My new module', 'my-new-module') <- this is your module
+]),
+```
+
+Here `New group for my module` has unique ID `6` by it's order's number.
+
+> Notice that your new module's Unique id must be the same as new page file's name, because this ID is used to generate routes between different pages inside the app.
+
+Last thing is turn on auto expanding for groups on navigation bar. You need to add group's ID to menu `defaultOpenKeys` property:
+
+```jsx
+<Menu
+  onClick={onClick}
+  selectedKeys={[activeNavItem.replace('/', '')]}
+  defaultOpenKeys={['2', '3', '4', '5', '6']} <- new ID added
+  mode="inline"
+  items={items}
+  className={styles.navbar}
+/>
+```
+
+---
+
+### Summary
+
+New module's file: `MyNewModule.js`  
+New module's component: `MyNewModule`
+
+New module's page file: `my-new-module.js`  
+New module's page component: `MyNewModulePage`  
+New module's page URL: `app.com/my-new-module` (generated automatically)
+
+## Left navigation bar
+
+Created with Ant design's Menu component. [See docs](https://ant.design/components/menu) for API and description.
+
+## Images
+
+There are two types of images in the app: icons and illustrations.
+
+### UI icons
+
+Eg: home icon in left navigation bar.  
+Such icons located in `src/components/Icons`.  
+Each icon is wrapped in react component. In this way it's possible to use icons inside Ant Design's components.
+
+### Illustrations
+
+Eg: images on home page  
+Such icons located in `public/images`.  
+These can be SVGs or raster images such as PNG or JPG. They are used in app via next's `Image` module, [see the docs](https://nextjs.org/docs/pages/api-reference/components/image). Eg:
+
+```js
+import solidity from "../../../../public/images/solidity.svg";
+...
+<Image src={solidity} />
+```
