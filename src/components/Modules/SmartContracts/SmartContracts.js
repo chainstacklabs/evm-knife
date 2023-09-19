@@ -75,6 +75,7 @@ const SmartContracts = ({ name, description }) => {
         withCopyButton={false}
         withConvertButton={true}
         onConvertButtonClick={handleApiCall} // Call handleApiCall when the Send button is clicked
+        actionButtonLabel="Fetch"
       />
 
       <InputWithLabel
