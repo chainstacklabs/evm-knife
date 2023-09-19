@@ -91,7 +91,15 @@ const SmartContracts = ({ name, description }) => {
       <>
         <div className={styles.wrapper}>
           <div className={styles.codeBoxLabel}>Smart Contract ABI</div>
-          <Button type="primary" size="small">
+          <Button
+            type="primary"
+            size="small"
+            onClick={() => {
+              if (abi != '') {
+                navigator.clipboard.writeText(JSON.parse(abi));
+              }
+            }}
+          >
             Copy code
           </Button>
         </div>
@@ -114,7 +122,15 @@ const SmartContracts = ({ name, description }) => {
       <>
         <div className={styles.wrapper}>
           <div className={styles.codeBoxLabel}>Smart Contract source code</div>
-          <Button type="primary" size="small">
+          <Button
+            type="primary"
+            size="small"
+            onClick={() => {
+              if (sourceCode != '') {
+                navigator.clipboard.writeText(sourceCode);
+              }
+            }}
+          >
             Copy code
           </Button>
         </div>
