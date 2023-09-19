@@ -18,6 +18,7 @@ const InputWithLabel = ({
   withSendButton = false,
   onSendButtonClick,
   inputOnlyNumbers = false,
+  actionButtonLabel = 'Convert',
 }) => {
   const [isCopied, setIsCopied] = useState(false);
   const configuredInput = () => {
@@ -74,11 +75,7 @@ const InputWithLabel = ({
           </Button>
         )}
         {withConvertButton && (
-          <Button
-            onClick={onConvertButtonClick}
-          >
-            Convert
-          </Button>
+          <Button onClick={onConvertButtonClick}>{actionButtonLabel}</Button>
         )}
       </Space.Compact>
     </div>
