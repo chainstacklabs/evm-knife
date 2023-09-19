@@ -1,16 +1,26 @@
-import React, { useState } from "react";
-import styles from "./SmartContracts.module.scss";
-import InputWithLabel from "@/components/InputWithLabel/InputWithLabel";
+import React, { useState } from 'react';
+import styles from './SmartContracts.module.scss';
+import InputWithLabel from '@/components/InputWithLabel/InputWithLabel';
+
+import { Button } from 'antd';
+
+import AceEditor from 'react-ace';
+
+import 'ace-builds/src-noconflict/mode-javascript';
+import 'ace-builds/src-noconflict/mode-json';
+import 'ace-builds/src-noconflict/theme-github';
+import 'ace-builds/src-noconflict/theme-xcode';
+import 'ace-builds/src-noconflict/ext-language_tools';
 
 const SmartContracts = ({ name, description }) => {
-  const [inputValue, setInputValue] = useState(""); // create the state
-  const [contractName, setContractName] = useState(""); // create the state for contract name
-  const [abi, setAbi] = useState(""); // create the state for ABI
-  const [sourceCode, setSourceCode] = useState(""); // create the state for ABI
+  const [inputValue, setInputValue] = useState(''); // create the state
+  const [contractName, setContractName] = useState(''); // create the state for contract name
+  const [abi, setAbi] = useState(''); // create the state for ABI
+  const [sourceCode, setSourceCode] = useState(''); // create the state for ABI
 
   // Function to handle API call
   const handleApiCall = async () => {
-    console.log("Calling source code API...");
+    console.log('Calling source code API...');
     // Check if inputValue is a valid Ethereum address
     if (!/^0x[a-fA-F0-9]{40}$/.test(inputValue)) {
       return;
@@ -18,7 +28,7 @@ const SmartContracts = ({ name, description }) => {
 
     // Make the API call
     const response = await fetch(`api/contractData?address=${inputValue}`, {
-      method: "GET",
+      method: 'GET',
     });
 
     // Check if the response is ok before proceeding
@@ -42,12 +52,12 @@ const SmartContracts = ({ name, description }) => {
     <div className={styles.SmartContracts}>
       <h1 className="module_header">Smart contract source code and ABI</h1>
       <div className="module_description">
-        {" "}
+        {' '}
         Input a smart contract address to retrieve its source code and ABI. Note
         that the contract must be verified.
         <br />
         <br />
-        Find an example of verified smart contract on{" "}
+        Find an example of verified smart contract on{' '}
         <a
           href="https://etherscan.io/token/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
           target="_blank"
@@ -78,27 +88,51 @@ const SmartContracts = ({ name, description }) => {
         withCopyButton={true}
       />
 
-      <InputWithLabel
-        inputLabel="Smart Contract ABI"
-        inputPlaceholder='[{"inputs":[{"internalType":"address","name":"_factory","type":"address"},{"internalType":"address","name":"_WETH9","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[],"name":"WETH9","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"components":[{"internalType":"bytes","name":"path","type":"bytes"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"deadline","type":"uint256"},{"internalType":"uint256","name":"amountIn","type":"uint256"},{"internalType":"uint256","name":"amountOutMinimum","type":"uint256"}],"internalType":"struct ISwapRouter.ExactInputParams","name":"params","type":"tuple"}],"name":"exactInput","outputs":[{"internalType":"uint256","name":"amountOut","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"components":[{"internalType":"address","name":"tokenIn","type":"address"},{"internalType":"address","name":"tokenOut","type":"address"},{"internalType":"uint24","name":"fee","type":"uint24"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"deadline","type":"uint256"},{"internalType":"uint256","name":"amountIn","type":"uint256"},{"internalType":"uint256","name":"amountOutMinimum","type":"uint256"},{"internalType":"uint160","name":"sqrtPriceLimitX96","type":"uint160"}],"internalType":"struct ISwapRouter.ExactInputSingleParams","name":"params","type":"tuple"}],"name":"exactInputSingle","outputs":[{"internalType":"uint256","name":"amountOut","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"components":[{"internalType":"bytes","name":"path","type":"bytes"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"deadline","type":"uint256"},{"internalType":"uint256","name":"amountOut","type":"uint256"},{"internalType":"uint256","name":"amountInMaximum","type":"uint256"}],"internalType":"struct ISwapRouter.ExactOutputParams","name":"params","type":"tuple"}],"name":"exactOutput","outputs":[{"internalType":"uint256","name":"amountIn","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[{"components":[{"internalType":"address","name":"tokenIn","type":"address"},{"internalType":"address","name":"tokenOut","type":"address"},{"internalType":"uint24","name":"fee","type":"uint24"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"deadline","type":"uint256"},{"internalType":"uint256","name":"amountOut","type":"uint256"},{"internalType":"uint256","name":"amountInMaximum","type":"uint256"},{"internalType":"uint160","name":"sqrtPriceLimitX96","type":"uint160"}],"internalType":"struct ISwapRouter.ExactOutputSingleParams","name":"params","type":"tuple"}],"name":"exactOutputSingle","outputs":[{"internalType":"uint256","name":"amountIn","type":"uint256"}],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"factory","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes[]","name":"data","type":"bytes[]"}],"name":"multicall","outputs":[{"internalType":"bytes[]","name":"results","type":"bytes[]"}],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"refundETH","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"},{"internalType":"uint256","name":"deadline","type":"uint256"},{"internalType":"uint8","name":"v","type":"uint8"},{"internalType":"bytes32","name":"r","type":"bytes32"},{"internalType":"bytes32","name":"s","type":"bytes32"}],"name":"selfPermit","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"nonce","type":"uint256"},{"internalType":"uint256","name":"expiry","type":"uint256"},{"internalType":"uint8","name":"v","type":"uint8"},{"internalType":"bytes32","name":"r","type":"bytes32"},{"internalType":"bytes32","name":"s","type":"bytes32"}],"name":"selfPermitAllowed","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"nonce","type":"uint256"},{"internalType":"uint256","name":"expiry","type":"uint256"},{"internalType":"uint8","name":"v","type":"uint8"},{"internalType":"bytes32","name":"r","type":"bytes32"},{"internalType":"bytes32","name":"s","type":"bytes32"}],"name":"selfPermitAllowedIfNecessary","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"},{"internalType":"uint256","name":"deadline","type":"uint256"},{"internalType":"uint8","name":"v","type":"uint8"},{"internalType":"bytes32","name":"r","type":"bytes32"},{"internalType":"bytes32","name":"s","type":"bytes32"}],"name":"selfPermitIfNecessary","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"amountMinimum","type":"uint256"},{"internalType":"address","name":"recipient","type":"address"}],"name":"sweepToken","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"token","type":"address"},{"internalType":"uint256","name":"amountMinimum","type":"uint256"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"feeBips","type":"uint256"},{"internalType":"address","name":"feeRecipient","type":"address"}],"name":"sweepTokenWithFee","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"int256","name":"amount0Delta","type":"int256"},{"internalType":"int256","name":"amount1Delta","type":"int256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"uniswapV3SwapCallback","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amountMinimum","type":"uint256"},{"internalType":"address","name":"recipient","type":"address"}],"name":"unwrapWETH9","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amountMinimum","type":"uint256"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"feeBips","type":"uint256"},{"internalType":"address","name":"feeRecipient","type":"address"}],"name":"unwrapWETH9WithFee","outputs":[],"stateMutability":"payable","type":"function"},{"stateMutability":"payable","type":"receive"}]'
-        inputValue={abi}
-        inputAllowClear={false}
-        inputShowCount
-        inputIsBordered={false}
-        inputReadOnly={true}
-        withCopyButton={true}
-      />
+      <>
+        <div className={styles.wrapper}>
+          <div className={styles.codeBoxLabel}>Smart Contract ABI</div>
+          <Button type="primary" size="small">
+            Copy code
+          </Button>
+        </div>
+        <div className={styles.codeBox}>
+          <AceEditor
+            mode="json"
+            theme="github"
+            name="smart-contract-abi"
+            value={abi != '' ? JSON.parse(abi) : abi}
+            showGutter={true}
+            width="750"
+            highlightActiveLine={false}
+            readOnly
+            wrapEnabled
+            placeholder="Provide Smart contract address to see ABI"
+          />
+        </div>
+      </>
 
-      <InputWithLabel
-        inputLabel="Smart Contract source code"
-        inputPlaceholder="'// SPDX-License-Identifier: GPL-2.0-or-laterpragma solidity =0.7.6;pragma abicoder v2;import '@uniswap/v3-core/contracts/libraries/SafeCast.sol';import '@uniswap/v3-core/contracts/libraries/TickMath.sol';import '@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol';import './interfaces/ISwapRouter.sol';"
-        inputValue={sourceCode}
-        inputAllowClear={false}
-        inputShowCount
-        inputIsBordered={false}
-        inputReadOnly={true}
-        withCopyButton={true}
-      />
+      <>
+        <div className={styles.wrapper}>
+          <div className={styles.codeBoxLabel}>Smart Contract source code</div>
+          <Button type="primary" size="small">
+            Copy code
+          </Button>
+        </div>
+        <div className={styles.codeBox}>
+          <AceEditor
+            mode="javascript"
+            theme="xcode"
+            name="source-code"
+            value={sourceCode}
+            showGutter={true}
+            width="750"
+            highlightActiveLine={true}
+            readOnly
+            wrapEnabled
+            placeholder="Provide Smart contract address to see source code"
+          />
+        </div>
+      </>
     </div>
   );
 };
