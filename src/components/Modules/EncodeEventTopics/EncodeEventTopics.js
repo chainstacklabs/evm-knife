@@ -44,7 +44,7 @@ const EncodeEventTopics = ({ name, description }) => {
       />
 
       <InputWithLabel
-        inputLabel="Bytes-32 encoded topic"
+        inputLabel="Bytes32 encoded topic"
         inputPlaceholder="0x00000000000000000000000085BC2E8Aaad5dBc347db49Ea45D95486279eD918"
         inputOnChange={() => {}}
         inputValue={inputValue && encodeTopic(inputValue)}

@@ -36,7 +36,7 @@ const Intro = () => {
         <br /> Swiss Army Knife
       </div>
       <div className={styles.description}>
-        Web3 EVM (Ethereum Virtual Machine) development refers to creating
+        Web3 Ethereum Virtual Machine (EVM) development refers to creating
         decentralized applications (DApps) that interact with the Ethereum
         blockchain and its smart contracts. Here are some essential tools
         commonly used to speed up development.
@@ -52,7 +52,7 @@ const Intro = () => {
             ),
           },
           {
-            name: "Solidity CALLDATA tools",
+            name: "Solidity calldata tools",
             text: "Enhance your smart contract development with our Solidity calldata utilities. Generate function signatures for contract interaction and encode calldata parameters. Useful for seamless contract execution and data management.",
             icon: () => (
               <Image src={solidity} height={iconSize} width={iconSize} />

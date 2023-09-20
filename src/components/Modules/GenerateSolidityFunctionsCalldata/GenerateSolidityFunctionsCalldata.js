@@ -21,9 +21,9 @@ const GenerateSolidityFunctionsCalldata = ({ name, description }) => {
       <h1 className="module_header">Generate Solidity functions signature</h1>
       <div className="module_description">
         {' '}
-        In web3 and Solidity, CALLDATA refers to the input data that is sent
+        In Web3 and Solidity, calldata refers to the input data that is sent
         along a transaction when an account is interacting with a smart contract
-        and calling its functions. The first 4 Bytes of CALLDATA represent the
+        and calling its functions. The first 4 bytes of calldata represent the
         function&apos;s signature.
         <br />
         <br />
@@ -32,7 +32,7 @@ const GenerateSolidityFunctionsCalldata = ({ name, description }) => {
           href="https://docs.chainstack.com/recipes/how-to-encode-calldata-parameters-to-programmatically-interact-with-a-smart-contract"
           target="_blank"
         >
-          How to encode callData parameters to programmatically interact with a
+          How to encode calldata parameters to programmatically interact with a
           smart contract ↗
         </a>{' '}
         recipe in the Chainstack developer portal.

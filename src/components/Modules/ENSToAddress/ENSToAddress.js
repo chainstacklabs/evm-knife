@@ -25,13 +25,13 @@ const EnsToAddressConverter = () => {
 
   return (
     <div className={styles.EnsToAddressConverter}>
-      <h1 className="module_header">ENS to Address Converter</h1>
+      <h1 className="module_header">ENS to address converter</h1>
       <div className="module_description">
         Convert an ENS name to an Ethereum address.
       </div>
 
       <InputWithLabel
-        inputLabel="Enter ENS Name"
+        inputLabel="Enter ENS name"
         inputPlaceholder=""
         inputOnChange={(e) => setEnsName(e.target.value)}
         withConvertButton={true}
@@ -39,7 +39,7 @@ const EnsToAddressConverter = () => {
       />
 
       <InputWithLabel
-        inputLabel="Ethereum Address"
+        inputLabel="Ethereum address"
         inputPlaceholder=""
         inputOnChange={() => {}}
         inputValue={ethAddress}
