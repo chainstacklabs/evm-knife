@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import styles from './GenerateEventSignature.module.scss';
-import InputWithLabel from '@/components/InputWithLabel/InputWithLabel';
-import Web3 from 'web3';
+import styles from "./GenerateEventSignature.module.scss";
+import InputWithLabel from "@/components/InputWithLabel/InputWithLabel";
+import Web3 from "web3";
 
 const GenerateEventSignature = () => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   // useEffect(() => {
   //   console.log(inputValue);
@@ -14,7 +14,7 @@ const GenerateEventSignature = () => {
   // encode event
   const handleInputChange = (string) => {
     const keccakHash = Web3.utils.keccak256(string);
-    return keccakHash || ''; // Return the keccakHash or an empty string
+    return keccakHash || ""; // Return the keccakHash or an empty string
   };
 
   return (
@@ -24,8 +24,8 @@ const GenerateEventSignature = () => {
         An event signature is a unique identifier for a specific event emitted
         by a smart contract on the blockchain. These signatures are generated
         using a formula that takes into account the event name and its emitted
-        data types. Specifically, the event signature is produced by hashing
-        the event's name and parameter types with Keccak-256.
+        data types. Specifically, the event signature is produced by hashing the
+        event&apos;s name and parameter types with Keccak-256.
       </div>
       <InputWithLabel
         inputLabel="Event name and parameters type"
