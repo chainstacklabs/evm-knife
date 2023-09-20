@@ -31,7 +31,7 @@ const EnsToAddressConverter = () => {
       </div>
 
       <InputWithLabel
-        inputLabel="Enter ENS Name"
+        inputLabel="Enter ENS name"
         inputPlaceholder=""
         inputOnChange={(e) => setEnsName(e.target.value)}
         withConvertButton={true}
@@ -39,7 +39,7 @@ const EnsToAddressConverter = () => {
       />
 
       <InputWithLabel
-        inputLabel="Ethereum Address"
+        inputLabel="Ethereum address"
         inputPlaceholder=""
         inputOnChange={() => {}}
         inputValue={ethAddress}

@@ -41,7 +41,7 @@ const EncodeCalldataParameters = ({ name, description }) => {
       />
 
       <InputWithLabel
-        inputLabel="Bytes-32 encoded parameter"
+        inputLabel="Bytes32 encoded parameter"
         inputPlaceholder="000000000000000000000000dfd5293d8e347dfe59e90efd55b2956a1343963d"
         inputOnChange={() => {}}
         inputValue={inputValue && encodeParameter(inputValue)}

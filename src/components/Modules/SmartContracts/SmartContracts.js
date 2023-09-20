@@ -91,7 +91,7 @@ const SmartContracts = ({ name, description }) => {
 
       <>
         <div className={styles.wrapper}>
-          <div className={styles.codeBoxLabel}>Smart Contract ABI</div>
+          <div className={styles.codeBoxLabel}>Smart contract ABI</div>
           <Button
             type="primary"
             size="small"
@@ -122,7 +122,7 @@ const SmartContracts = ({ name, description }) => {
 
       <>
         <div className={styles.wrapper}>
-          <div className={styles.codeBoxLabel}>Smart Contract source code</div>
+          <div className={styles.codeBoxLabel}>Smart contract source code</div>
           <Button
             type="primary"
             size="small"
