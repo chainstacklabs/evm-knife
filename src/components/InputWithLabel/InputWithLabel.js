@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { Button, Input, Select, Space, InputNumber } from 'antd';
-import styles from './InputWithLabel.module.scss';
+import { Spin, Button, Input, Select, Space, InputNumber } from "antd";
+import styles from "./InputWithLabel.module.scss";
 
 const InputWithLabel = ({
   inputLabel,
@@ -17,8 +17,9 @@ const InputWithLabel = ({
   withCopyButton,
   withSendButton = false,
   onSendButtonClick,
+  isLoading = false,
   inputOnlyNumbers = false,
-  actionButtonLabel = 'Convert',
+  actionButtonLabel = "Convert",
 }) => {
   const [isCopied, setIsCopied] = useState(false);
   const configuredInput = () => {
@@ -50,7 +51,7 @@ const InputWithLabel = ({
           size="large"
           readOnly={inputReadOnly || false}
           enterButton="Search"
-          style={{ width: '100%' }}
+          style={{ width: "100%" }}
         />
       );
     }
@@ -59,7 +60,7 @@ const InputWithLabel = ({
   return (
     <div className={styles.InputWithLabel}>
       <div className={styles.inputLabel}>{inputLabel}</div>
-      <Space.Compact size="large" style={{ width: '100%' }}>
+      <Space.Compact size="large" style={{ width: "100%" }}>
         {configuredInput()}
         {withCopyButton && (
           <Button
@@ -71,11 +72,13 @@ const InputWithLabel = ({
               setTimeout(() => setIsCopied(false), 1000);
             }}
           >
-            {isCopied === false ? 'Copy result' : 'Copied!'}
+            {isCopied === false ? "Copy result" : "Copied!"}
           </Button>
         )}
         {withConvertButton && (
-          <Button onClick={onConvertButtonClick}>{actionButtonLabel}</Button>
+          <Button onClick={onConvertButtonClick} disabled={isLoading}>
+            {isLoading ? <Spin /> : actionButtonLabel}
+          </Button>
         )}
       </Space.Compact>
     </div>

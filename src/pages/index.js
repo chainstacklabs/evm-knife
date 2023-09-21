@@ -1,8 +1,10 @@
-import Head from 'next/head';
+import Head from "next/head";
 // import Converter from '../components/Converter/Converter';
-import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
+import LayoutWrapper from "@/components/LayoutWrapper/LayoutWrapper";
 // import Navbar from '@/components/Navbar/Navbar';
-import Intro from '@/components/Modules/Intro/Intro';
+import Intro from "@/components/Modules/Intro/Intro";
+// Vercel analytics
+import { Analytics } from "@vercel/analytics/react";
 
 export default function Home() {
   return (
@@ -17,7 +19,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Analytics />
       <LayoutWrapper>
         <Intro />
       </LayoutWrapper>

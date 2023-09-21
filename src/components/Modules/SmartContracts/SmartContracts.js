@@ -1,26 +1,28 @@
-import React, { useState } from 'react';
-import styles from './SmartContracts.module.scss';
-import InputWithLabel from '@/components/InputWithLabel/InputWithLabel';
+import React, { useState } from "react";
+import styles from "./SmartContracts.module.scss";
+import InputWithLabel from "@/components/InputWithLabel/InputWithLabel";
 
-import { Button } from 'antd';
+import { Button } from "antd";
 
-import AceEditor from 'react-ace';
+import AceEditor from "react-ace";
 
-import 'ace-builds/src-noconflict/mode-javascript';
-import 'ace-builds/src-noconflict/mode-json';
-import 'ace-builds/src-noconflict/theme-github';
-import 'ace-builds/src-noconflict/theme-xcode';
-import 'ace-builds/src-noconflict/ext-language_tools';
+import "ace-builds/src-noconflict/mode-javascript";
+import "ace-builds/src-noconflict/mode-json";
+import "ace-builds/src-noconflict/theme-github";
+import "ace-builds/src-noconflict/theme-xcode";
+import "ace-builds/src-noconflict/ext-language_tools";
 
 const SmartContracts = ({ name, description }) => {
-  const [inputValue, setInputValue] = useState(''); // create the state
-  const [contractName, setContractName] = useState(''); // create the state for contract name
-  const [abi, setAbi] = useState(''); // create the state for ABI
-  const [sourceCode, setSourceCode] = useState(''); // create the state for ABI
+  const [inputValue, setInputValue] = useState(""); // create the state
+  const [contractName, setContractName] = useState(""); // create the state for contract name
+  const [abi, setAbi] = useState(""); // create the state for ABI
+  const [sourceCode, setSourceCode] = useState(""); // create the state for ABI
+  const [isLoading, setIsLoading] = useState(false);
 
   // Function to handle API call
   const handleApiCall = async () => {
-    console.log('Calling source code API...');
+    setIsLoading(true);
+    console.log("Calling source code API...");
     // Check if inputValue is a valid Ethereum address
     if (!/^0x[a-fA-F0-9]{40}$/.test(inputValue)) {
       return;
@@ -28,7 +30,7 @@ const SmartContracts = ({ name, description }) => {
 
     // Make the API call
     const response = await fetch(`api/contractData?address=${inputValue}`, {
-      method: 'GET',
+      method: "GET",
     });
 
     // Check if the response is ok before proceeding
@@ -46,18 +48,19 @@ const SmartContracts = ({ name, description }) => {
     setContractName(data.ContractName);
     setAbi(JSON.stringify(data.ABI, null, 2)); // Pretty-print the ABI
     setSourceCode(data.SourceCode);
+    setIsLoading(false);
   };
 
   return (
     <div className={styles.SmartContracts}>
       <h1 className="module_header">Smart contract source code and ABI</h1>
       <div className="module_description">
-        {' '}
+        {" "}
         Input a smart contract address to retrieve its source code and ABI. Note
         that the contract must be verified.
         <br />
         <br />
-        Find an example of verified smart contract on{' '}
+        Find an example of verified smart contract on{" "}
         <a
           href="https://etherscan.io/token/0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d"
           target="_blank"
@@ -75,6 +78,7 @@ const SmartContracts = ({ name, description }) => {
         withCopyButton={false}
         withConvertButton={true}
         onConvertButtonClick={handleApiCall} // Call handleApiCall when the Send button is clicked
+        isLoading={isLoading}
         actionButtonLabel="Fetch"
       />
 
@@ -96,7 +100,7 @@ const SmartContracts = ({ name, description }) => {
             type="primary"
             size="small"
             onClick={() => {
-              if (abi != '') {
+              if (abi != "") {
                 navigator.clipboard.writeText(JSON.parse(abi));
               }
             }}
@@ -109,7 +113,7 @@ const SmartContracts = ({ name, description }) => {
             mode="json"
             theme="github"
             name="smart-contract-abi"
-            value={abi != '' ? JSON.parse(abi) : abi}
+            value={abi != "" ? JSON.parse(abi) : abi}
             showGutter={true}
             width="750"
             highlightActiveLine={false}
@@ -127,7 +131,7 @@ const SmartContracts = ({ name, description }) => {
             type="primary"
             size="small"
             onClick={() => {
-              if (sourceCode != '') {
+              if (sourceCode != "") {
                 navigator.clipboard.writeText(sourceCode);
               }
             }}
