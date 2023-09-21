@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import styles from './EncodeEventTopics.module.scss';
-import InputWithLabel from '@/components/InputWithLabel/InputWithLabel';
-import Web3 from 'web3';
+import React, { useEffect, useState } from "react";
+import styles from "./EncodeEventTopics.module.scss";
+import InputWithLabel from "@/components/InputWithLabel/InputWithLabel";
+import Web3 from "web3";
 
 const EncodeEventTopics = ({ name, description }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const encodeTopic = (topic) => {
     // Check if the input doesn't start with '0x', then add it
-    if (!topic.startsWith('0x')) {
-      topic = '0x' + topic;
+    if (!topic.startsWith("0x")) {
+      topic = "0x" + topic;
     }
     const encodedParameter = Web3.utils.padLeft(topic, 64); // 64 characters = 32 bytes encoding
     return encodedParameter;
@@ -24,13 +24,12 @@ const EncodeEventTopics = ({ name, description }) => {
         node.
         <br />
         <br />
-        Learn how to retrieve event logs using the{' '}
-        <a
-          href="https://docs.chainstack.com/reference/ethereum-getlogs"
-          target="_blank"
-        >
+        Learn how to retrieve event logs using the{" "}
+        {/* Link to eth_getLogs docs */}
+        <a href="https://shorturl.at/ersAG" target="_blank">
+          {" "}
           eth_getLogs ↗
-        </a>{' '}
+        </a>{" "}
         method on the Chainstack developer portal.
       </div>
       <InputWithLabel

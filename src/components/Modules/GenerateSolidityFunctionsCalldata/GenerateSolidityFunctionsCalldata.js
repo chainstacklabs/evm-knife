@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import styles from './GenerateSolidityFunctionsCalldata.module.scss';
-import InputWithLabel from '@/components/InputWithLabel/InputWithLabel';
-import Web3 from 'web3';
+import styles from "./GenerateSolidityFunctionsCalldata.module.scss";
+import InputWithLabel from "@/components/InputWithLabel/InputWithLabel";
+import Web3 from "web3";
 
 const GenerateSolidityFunctionsCalldata = ({ name, description }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   // Function to encode solidity functions and parameters
   const encodeFunction = (func) => {
@@ -13,28 +13,26 @@ const GenerateSolidityFunctionsCalldata = ({ name, description }) => {
     if (hashedFunction) {
       return hashedFunction.slice(0, 10);
     }
-    return ''; // Return an empty string if there's no hashed function
+    return ""; // Return an empty string if there's no hashed function
   };
 
   return (
     <div className={styles.GenerateSolidityFunctionsCalldata}>
       <h1 className="module_header">Generate Solidity functions signature</h1>
       <div className="module_description">
-        {' '}
+        {" "}
         In Web3 and Solidity, calldata refers to the input data that is sent
         along a transaction when an account is interacting with a smart contract
         and calling its functions. The first 4 bytes of calldata represent the
         function&apos;s signature.
         <br />
         <br />
-        Learn how the encoding process work following the{' '}
-        <a
-          href="https://docs.chainstack.com/recipes/how-to-encode-calldata-parameters-to-programmatically-interact-with-a-smart-contract"
-          target="_blank"
-        >
+        Learn how the encoding process work following the{" "}
+        {/** Link to recipe */}
+        <a href="https://shorturl.at/isFW4" target="_blank">
           How to encode calldata parameters to programmatically interact with a
           smart contract ↗
-        </a>{' '}
+        </a>{" "}
         recipe in the Chainstack developer portal.
       </div>
       <InputWithLabel

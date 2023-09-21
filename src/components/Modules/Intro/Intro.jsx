@@ -19,7 +19,7 @@ const Intro = () => {
     <div className={styles.intro}>
       <a
         className={styles.powered}
-        href="https://chainstack.com/"
+        href="https://chainstack.com/?utm_source=web3knife&utm_medium=referral"
         target="_blank"
       >
         <Image

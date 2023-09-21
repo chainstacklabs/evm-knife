@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import styles from './Checksum.module.scss';
-import InputWithLabel from '@/components/InputWithLabel/InputWithLabel';
-import Web3 from 'web3';
+import React, { useEffect, useState } from "react";
+import styles from "./Checksum.module.scss";
+import InputWithLabel from "@/components/InputWithLabel/InputWithLabel";
+import Web3 from "web3";
 
 const ChecksumAddress = ({ name, description }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     console.log(inputValue);
@@ -12,14 +12,14 @@ const ChecksumAddress = ({ name, description }) => {
 
   // checksum
   const handleInputChange = (string) => {
-    if (string.trim() === '') {
+    if (string.trim() === "") {
       // Check if the string is empty or contains only whitespace
-      return ''; // Return an empty string
+      return ""; // Return an empty string
     }
 
     // Check if the string only contains hexadecimal characters
     if (!/^0x[0-9a-fA-F]*$/.test(string)) {
-      return 'This is not a valid address.'; // Return an empty string if invalid characters are present
+      return "This is not a valid address."; // Return an empty string if invalid characters are present
     }
 
     try {
@@ -40,11 +40,8 @@ const ChecksumAddress = ({ name, description }) => {
         Checksumming aims to prevent errors when an address is typed manually.
         <br />
         <br />
-        Find more about checksum in Ethereum in the{' '}
-        <a
-          href="https://docs.chainstack.com/docs/smart-contracts-glossary?kjh#address-checksumming"
-          target="_blank"
-        >
+        Find more about checksum in Ethereum in the {/** Link to glossary */}
+        <a href="https://shorturl.at/DGHT3" target="_blank">
           Chainstack developer portal ↗
         </a>
         .

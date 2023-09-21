@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import styles from './Keccak-256.module.scss';
-import InputWithLabel from '@/components/InputWithLabel/InputWithLabel';
-import Web3 from 'web3';
+import React, { useEffect, useState } from "react";
+import styles from "./Keccak-256.module.scss";
+import InputWithLabel from "@/components/InputWithLabel/InputWithLabel";
+import Web3 from "web3";
 
 const KeccakConverter = ({ name, description }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(() => {
     console.log(inputValue);
@@ -13,7 +13,7 @@ const KeccakConverter = ({ name, description }) => {
   // encode event
   const handleInputChange = (string) => {
     const keccakHash = Web3.utils.keccak256(string);
-    return keccakHash || ''; // Return the keccakHash or an empty string
+    return keccakHash || ""; // Return the keccakHash or an empty string
   };
 
   return (
@@ -28,11 +28,9 @@ const KeccakConverter = ({ name, description }) => {
         a one-way function.
         <br />
         <br />
-        Find a list of examples where Keccak-256 is used in the{' '}
-        <a
-          href="https://docs.chainstack.com/docs/smart-contracts-glossary#keccak256"
-          target="_blank"
-        >
+        Find a list of examples where Keccak-256 is used in the{" "}
+        {/** Link to glossary */}
+        <a href="https://shorturl.at/hijrD" target="_blank">
           Chainstack developer portal ↗
         </a>
         .

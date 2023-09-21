@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import styles from './EncodeCalldataParameters.module.scss';
-import InputWithLabel from '@/components/InputWithLabel/InputWithLabel';
-import Web3 from 'web3';
+import React, { useEffect, useState } from "react";
+import styles from "./EncodeCalldataParameters.module.scss";
+import InputWithLabel from "@/components/InputWithLabel/InputWithLabel";
+import Web3 from "web3";
 
 const EncodeCalldataParameters = ({ name, description }) => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   const encodeParameter = (topic) => {
     const paddedParameter = Web3.utils.padLeft(topic, 64); // 64 characters = 32 bytes encoding
@@ -16,18 +16,16 @@ const EncodeCalldataParameters = ({ name, description }) => {
     <div className={styles.EncodeCalldataParameters}>
       <h1 className="module_header">Encode calldata parameters</h1>
       <div className="module_description">
-        Parameters passed to the function in calldata are represented
-        as 32 bytes of data.
+        Parameters passed to the function in calldata are represented as 32
+        bytes of data.
         <br />
         <br />
-        Learn how the encoding process work following the{' '}
-        <a
-          href="https://docs.chainstack.com/recipes/how-to-encode-calldata-parameters-to-programmatically-interact-with-a-smart-contract"
-          target="_blank"
-        >
+        Learn how the encoding process work following the{" "}
+        {/** Link to recipe */}
+        <a href="https://shorturl.at/ehIP9" target="_blank">
           How to encode calldata parameters to programmatically interact with a
           smart contract ↗
-        </a>{' '}
+        </a>{" "}
         recipe in the Chainstack developer portal.
       </div>
       <InputWithLabel
