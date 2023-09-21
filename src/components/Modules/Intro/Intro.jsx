@@ -11,12 +11,14 @@ import IconBulb from "@/components/Icons/IconBulb";
 import sc from "../../../../public/images/sc.svg";
 import solidity from "../../../../public/images/solidity.svg";
 import styles from "./Intro.module.scss";
-
+// Vercel analytics
+import { Analytics } from "@vercel/analytics/react";
 const Intro = () => {
   const iconSize = 32;
 
   return (
     <div className={styles.intro}>
+      <Analytics />
       <a
         className={styles.powered}
         href="https://chainstack.com/?utm_source=web3knife&utm_medium=referral"
