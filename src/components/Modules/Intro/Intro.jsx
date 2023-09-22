@@ -132,7 +132,7 @@ const Intro = () => {
         <div className={styles.left}>
           <IconBulb />
           <div className={styles.lines}>
-            <div>Missing tool?</div>
+            <div>Missing a tool?</div>
             <div>Leave a request for a new one</div>
           </div>
         </div>
