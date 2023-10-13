@@ -7,9 +7,10 @@ export default function GAtracker() {
       <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKER_ID}`}
+        id="google-tag"
       />
 
-      <Script strategy="lazyOnload">
+      <Script strategy="lazyOnload" id="google-tag-2">
         {`
                     window.dataLayer = window.dataLayer || [];
                     function gtag(){dataLayer.push(arguments);}
