@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
 import EncodeEventTopics from '@/components/Modules/EncodeEventTopics/EncodeEventTopics';
+import GAtracker from '../components/GAtracker/GAtracker';
 
 export default function EncodeEventTopicsPage() {
   return (
     <>
+      <GAtracker />
       <Head>
         <title>The EVM Swiss Army Knife — Chainstack</title>
         <meta

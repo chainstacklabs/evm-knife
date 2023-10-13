@@ -1,12 +1,14 @@
-import Head from "next/head";
+import Head from 'next/head';
 // import Converter from '../components/Converter/Converter';
-import LayoutWrapper from "@/components/LayoutWrapper/LayoutWrapper";
+import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
 // import Navbar from '@/components/Navbar/Navbar';
-import Intro from "@/components/Modules/Intro/Intro";
+import Intro from '@/components/Modules/Intro/Intro';
+import GAtracker from '../components/GAtracker/GAtracker';
 
 export default function Home() {
   return (
     <>
+      <GAtracker />
       <Head>
         <title>The EVM Swiss Army Knife — Chainstack</title>
         <meta

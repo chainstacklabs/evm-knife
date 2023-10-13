@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
 import KeccakConverter from '@/components/Modules/Keccak-256/Keccak-256';
+import GAtracker from '../components/GAtracker/GAtracker';
 
 export default function KeccakConverterPage() {
   return (
     <>
+      <GAtracker />
       <Head>
         <title>The EVM Swiss Army Knife — Chainstack</title>
         <meta

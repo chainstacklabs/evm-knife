@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
 import GenerateEventSignature from '@/components/Modules/GenerateEventSignature/GenerateEventSignature';
+import GAtracker from '../components/GAtracker/GAtracker';
 
 export default function GenerateEventSignaturePage() {
   return (
     <>
+      <GAtracker />
       <Head>
         <title>The EVM Swiss Army Knife — Chainstack</title>
         <meta

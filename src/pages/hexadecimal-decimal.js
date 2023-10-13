@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
 import HexConverter from '@/components/Modules/HexConverter/HexConverter';
+import GAtracker from '../components/GAtracker/GAtracker';
 
 export default function HexadecimalDecimalPage() {
   return (
     <>
+      <GAtracker />
       <Head>
         <title>The EVM Swiss Army Knife — Chainstack</title>
         <meta

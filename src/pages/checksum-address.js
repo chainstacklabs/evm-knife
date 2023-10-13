@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
 import ChecksumAddress from '@/components/Modules/Checksum/Checksum';
+import GAtracker from '../components/GAtracker/GAtracker';
 
 export default function ChecksumAddressPage() {
   return (
     <>
+      <GAtracker />
       <Head>
         <title>The EVM Swiss Army Knife — Chainstack</title>
         <meta

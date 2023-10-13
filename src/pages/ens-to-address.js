@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
 import EnsToAddressConverter from '@/components/Modules/ENSToAddress/ENSToAddress';
+import GAtracker from '../components/GAtracker/GAtracker';
 
 export default function EnsToAddressPage() {
   return (
     <>
+      <GAtracker />
       <Head>
         <title>The EVM Swiss Army Knife — Chainstack</title>
         <meta

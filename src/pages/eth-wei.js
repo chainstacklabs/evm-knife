@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
 import EthWeiConverter from '@/components/Modules/EthWeiConverter/EthWeiConverter';
+import GAtracker from '../components/GAtracker/GAtracker';
 
 export default function EthWeiPage() {
   return (
     <>
+      <GAtracker />
       <Head>
         <title>The EVM Swiss Army Knife — Chainstack</title>
         <meta

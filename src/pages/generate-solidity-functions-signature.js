@@ -1,10 +1,12 @@
 import Head from 'next/head';
 import LayoutWrapper from '@/components/LayoutWrapper/LayoutWrapper';
 import GenerateSolidityFunctionsCalldata from '@/components/Modules/GenerateSolidityFunctionsCalldata/GenerateSolidityFunctionsCalldata';
+import GAtracker from '../components/GAtracker/GAtracker';
 
 export default function GenerateSolidityFunctionsSignaturePage() {
   return (
     <>
+      <GAtracker />
       <Head>
         <title>The EVM Swiss Army Knife — Chainstack</title>
         <meta
