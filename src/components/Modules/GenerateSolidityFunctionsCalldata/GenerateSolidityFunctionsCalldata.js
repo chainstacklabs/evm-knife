@@ -18,13 +18,13 @@ const GenerateSolidityFunctionsCalldata = ({ name, description }) => {
 
   return (
     <div className={styles.GenerateSolidityFunctionsCalldata}>
-      <h1 className="module_header">Generate Solidity functions signature</h1>
+      <h1 className="module_header">Generate Solidity function signatures</h1>
       <div className="module_description">
-        {" "}
-        In Web3 and Solidity, calldata refers to the input data that is sent
-        along a transaction when an account is interacting with a smart contract
-        and calling its functions. The first 4 bytes of calldata represent the
-        function&apos;s signature.
+        In Solidity, a function signature is derived by taking the{" "}
+        <a href="/keccak-256"> Keccak-256</a> hash representation of the
+        function name along with its parameter types. This hash is then
+        truncated to its first 4 bytes, which serve to uniquely identify the
+        function within the smart contract.
         <br />
         <br />
         Learn how the encoding process work following the{" "}
