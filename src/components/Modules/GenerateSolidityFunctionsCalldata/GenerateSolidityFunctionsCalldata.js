@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 import styles from "./GenerateSolidityFunctionsCalldata.module.scss";
 import InputWithLabel from "@/components/InputWithLabel/InputWithLabel";
@@ -21,7 +22,7 @@ const GenerateSolidityFunctionsCalldata = ({ name, description }) => {
       <h1 className="module_header">Generate Solidity function signatures</h1>
       <div className="module_description">
         In Solidity, a function signature is derived by taking the{" "}
-        <a href="/keccak-256"> Keccak-256</a> hash representation of the
+        <Link href="/keccak-256">Keccak-256</Link> hash representation of the
         function name along with its parameter types. This hash is then
         truncated to its first 4 bytes, which serve to uniquely identify the
         function within the smart contract.
